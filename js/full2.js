@@ -319,6 +319,7 @@ function m(a, c) {
         $("#wsGridOverlay").bind("mousedown", pa);
         R.dragSelect && $("#wsGridOverlay").bind("mouseup", qa);
         $("#wsGrid").bind("mousedown", ra);
+
         P = S()
     } else if (M = [], w = [], L = [], $("#wsGridOverlay").bind("mousedown", pa), R.dragSelect &&
         $("#wsGridOverlay").bind("mouseup", qa), $("#wsGrid").bind("mousedown", ra), ia) {
@@ -482,6 +483,7 @@ String.prototype.reverse = function() {
 function U(a, c, b) {
     var j = Math.floor(a / F + 1) * (z + A) - (z + A) + C,
         d = Math.floor(a % F + 1) * (z + A) - (z + A) + C;
+
     c.globalAlpha = 1;
     b ? (c.strokeStyle = "#FF9933", c.fillStyle = "#FFCD9B", c.lineWidth = 3, c.fillRect(d, j, z, z), c.strokeRect(d - 1, j - 1, z + 2, z + 2)) : (c.fillStyle = "#FFF", c.fillRect(d, j, z, z), R.showGrid && (c.strokeStyle = "#CCC", c.lineWidth = 1, c.strokeRect(d, j, z, z)));
     c.font = fa;
@@ -562,6 +564,7 @@ function wa(a) {
     if (b)
         if (b = xa(b), -1 < b) {
             za("success");
+            tts(w[b].g);
             sa(b, c, a);
             w[b].d = i;
             w[b].f = c;
@@ -576,8 +579,16 @@ function wa(a) {
                 a = i
             }
             a && Aa()
+
         } else za("fail")
 }
+
+function tts(b){
+       var msg = new SpeechSynthesisUtterance(b);
+
+        msg.lang = 'en-US';
+        window.speechSynthesis.speak(msg);
+        }
 
 function sa(a, c, b) {
     c = Ba(c);
