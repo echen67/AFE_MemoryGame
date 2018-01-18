@@ -584,10 +584,29 @@ function wa(a) {
 }
 
 function tts(b){
-       var msg = new SpeechSynthesisUtterance(b);
 
+    var msg = new SpeechSynthesisUtterance(b);
+    var voices = window.speechSynthesis.getVoices();
+    console.log(voices);
+    if (voices.length > 0) {
+        msg.voice = voices[1];
         msg.lang = 'en-US';
         window.speechSynthesis.speak(msg);
+    } else {
+        // wait on voices to be loaded before fetching list
+        window.speechSynthesis.onvoiceschanged = function() {
+            msg.voice = window.speechSynthesis.getVoices()[1];
+            msg.lang = 'en-US';
+            window.speechSynthesis.speak(msg);
+        };  
+    }
+//       speechSynthesis.getVoices().forEach(function(voice) {
+//         console.log(voice.name, voice.default ? voice.default :'');
+//       });
+
+     //  var voices = window.speechSynthesis.getVoices();
+    //   msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
+
         }
 
 function sa(a, c, b) {
