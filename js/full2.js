@@ -218,10 +218,7 @@ function shareWin(a, b, f) {
     window.open(a, "shareWin", "height=" + f + ",width=" + b + ",resizable=no,scrollbars=no,toolbar=no,status=no", !0)
 }
 
-function tts(){
-    var msg = new SpeechSynthesisUtterance('Hello World');
-    window.speechSynthesis.speak(msg);
-}
+
 
 function addFollows() {
     if (!(0 >= $(".followBtns").length)) {
@@ -583,11 +580,14 @@ function wa(a) {
         } else za("fail")
 }
 
-function tts(b){
+function tts(wordFound){
+    //Set up Google TTS
+    var msg = new SpeechSynthesisUtterance(wordFound);
 
-    var msg = new SpeechSynthesisUtterance(b);
+    // Get list of voices to get female voice
     var voices = window.speechSynthesis.getVoices();
-    console.log(voices);
+
+    // if voices is loaded
     if (voices.length > 0) {
         msg.voice = voices[1];
         msg.lang = 'en-US';
@@ -600,14 +600,7 @@ function tts(b){
             window.speechSynthesis.speak(msg);
         };  
     }
-//       speechSynthesis.getVoices().forEach(function(voice) {
-//         console.log(voice.name, voice.default ? voice.default :'');
-//       });
-
-     //  var voices = window.speechSynthesis.getVoices();
-    //   msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
-
-        }
+}
 
 function sa(a, c, b) {
     c = Ba(c);
