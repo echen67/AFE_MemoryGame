@@ -559,13 +559,19 @@ function wa(a) {
             }
         }
     if (b)
+        // when word from wordbank is successfully found
         if (b = xa(b), -1 < b) {
             za("success");
             tts(w[b].g);
+            console.log(w[b]);
             sa(b, c, a);
             w[b].d = i;
+            // f = starting index of the word
             w[b].f = c;
+
+            // h = ending index of the word
             w[b].h = a;
+            console.log(w[b]);
             ta();
             a: {
                 for (a = 0; a < w.length; a++)
