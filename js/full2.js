@@ -225,10 +225,7 @@ function shareWin(a, b, f) {
     window.open(a, "shareWin", "height=" + f + ",width=" + b + ",resizable=no,scrollbars=no,toolbar=no,status=no", !0)
 }
 
-function tts(){
-    var msg = new SpeechSynthesisUtterance('Hello World');
-    window.speechSynthesis.speak(msg);
-}
+
 
 // Called when game is finished; is the little green box
 function addFollows() {
@@ -578,13 +575,19 @@ function wa(a) {
             }
         }
     if (b)
+        // when word from wordbank is successfully found
         if (b = xa(b), -1 < b) {
             za("success");
             tts(w[b].g);
+            console.log(w[b]);
             sa(b, c, a);
             w[b].d = i;
+            // f = starting index of the word
             w[b].f = c;
+
+            // h = ending index of the word
             w[b].h = a;
+            console.log(w[b]);
             ta();
             a: {
                 for (a = 0; a < w.length; a++)
@@ -599,12 +602,13 @@ function wa(a) {
         } else za("fail")
 }
 
-function tts(b){
+function tts(wordFound){
+    //Set up Google TTS
+    var msg = new SpeechSynthesisUtterance(wordFound);
 
-    var msg = new SpeechSynthesisUtterance(b);
+    // Get list of voices to get female voice
     var voices = window.speechSynthesis.getVoices();
-//    console.log(voices);
-    console.log("TEXTTOSPEECH");
+    // if voices is loaded
     if (voices.length > 0) {
         msg.voice = voices[1];
         msg.lang = 'en-US';
@@ -615,16 +619,9 @@ function tts(b){
             msg.voice = window.speechSynthesis.getVoices()[1];
             msg.lang = 'en-US';
             window.speechSynthesis.speak(msg);
-        };  
+        };
     }
-//       speechSynthesis.getVoices().forEach(function(voice) {
-//         console.log(voice.name, voice.default ? voice.default :'');
-//       });
-
-     //  var voices = window.speechSynthesis.getVoices();
-    //   msg.voice = speechSynthesis.getVoices().filter(function(voice) { return voice.name == 'Microsoft Zira Desktop - English (United States)'; })[0];
-
-        }
+}
 
 function sa(a, c, b) {
     c = Ba(c);
