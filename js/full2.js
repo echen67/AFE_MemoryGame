@@ -152,11 +152,13 @@
 dD = document;
 ajax = "Microsoft Internet Explorer" == navigator.appName ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest;
 
+// Comment box that we have now removed, unnecessary
 function submitComment(a) {
     c = dD.getElementById("cmBox").value;
     checkComment() ? alert("Cannot submit comment until the problems are corrected") : (c = c.replace(/\n{3,}/g, "\n\n"), ajax.open("GET", "/api/comment/?puzzleid=" + a + "&comment=" + c, !1), ajax.send(null), ajax.responseText ? alert(ajax.responseText) : dD.getElementById("cmInput").innerHTML = "<b>Thank you, your comment was received</b><p>" + c.replace(/\n/g, "<br />") + "</p>")
 }
 
+// Comment box that we have now removed, unnecessary
 function checkComment() {
     c = dD.getElementById("cmBox").value;
     e = dD.getElementById("cmErr");
@@ -166,12 +168,15 @@ function checkComment() {
     return 0
 }
 
+// Comment box that we have now removed, unnecessary
 function mustLogin() {
     dD.getElementById("cmErr").innerHTML = "Please login below first before writing your comment"
 }
 var profaneWords;
 
+// Looks like it should be called by maker.html
 function profanityCheck(a) {
+//    console.log("PROFANITYCHECK");
     profaneWords || (profaneWords = "r,e,k,n,a,w,|,t,u,l,s,|,k,c,i,r,p,|,r,e,g,g,i,n,|,e,l,o,h,e,s,r,a,|,e,l,o,h,s,s,a,|,k,c,i,d,|,k,c,o,c,|,y,s,s,u,p,|,s,t,i,t,|,t,1,h,s,|,t,n,u,c,|,k,c,u,f,|,t,i,h,s".split(",").reverse().join(""));
     return RegExp(profaneWords, "i").test(a) ? 1 : 0
 }
@@ -179,6 +184,7 @@ loginpop = function(a) {
     "fb" == a ? popOpen("fbLogin", "/user/facebook_login/", 600, 400, !0) : "tw" == a && popOpen("twLogin", "/user/twitter_login/", 700, 655, !0)
 };
 
+// Unnecessary, we do not need fb/twitter logins
 function popOpen(a, b, f, d, g, i) {
     if (a && b) {
         f || (f = 500);
@@ -214,6 +220,7 @@ addShares = function(a) {
     $(".shareBtns").html("<ul>" + d + "</ul>")
 };
 
+// Unnecessary
 function shareWin(a, b, f) {
     window.open(a, "shareWin", "height=" + f + ",width=" + b + ",resizable=no,scrollbars=no,toolbar=no,status=no", !0)
 }
@@ -223,7 +230,9 @@ function tts(){
     window.speechSynthesis.speak(msg);
 }
 
+// Called when game is finished; is the little green box
 function addFollows() {
+//    console.log("ADDFOLLOWS");
     if (!(0 >= $(".followBtns").length)) {
         $(".followBtns").html('<p style="font-size:1.2em;font-weight:bold;line-height:1.6em;margin:0;">We post new puzzles daily</p><p style="font-size:.8em;line-height:1.2em;margin:0;">Follow us and keep updated</p><div style="margin:6px"><div class="g-follow" data-annotation="bubble" data-height="24" data-href="//plus.google.com/110201874159160040936" data-rel="publisher"></div></div>').show();
         var a = document.createElement("script");
@@ -243,6 +252,7 @@ function addFollows() {
         b.parentNode.insertBefore(a, b)
     }
 })();
+
 var i = !0,
     k = null,
     l = !1;
@@ -280,7 +290,9 @@ var n = k,
     Q = 0,
     ja, ka, la, ma, na, R = ca();
 
+// Called in beginning; seems to contain the list of words, and gets passed into loadGameDataWeb
 function aa(a) {
+    //console.log("aaaaaaa");
     v = 0;
     u = {
         c: []
@@ -294,6 +306,7 @@ function aa(a) {
     u.c[0].e[0].j = a.words
 }
 
+// Called at beginning, seems to be the main function creating the game
 function m(a, c) {
     s = a;
     try {
@@ -430,6 +443,7 @@ function S() {
     return (new Date).getTime() / 1E3
 }
 
+// Creating the actual game grid?
 function oa(a, c, b, j) {
     var d = document.createElement("canvas");
     d.setAttribute("width", c);
@@ -498,6 +512,7 @@ function pa(a) {
     if (!(a.x <= C || a.y <= C) && !(a.x >= N - C || a.y >= O - C)) R.dragSelect ? (y = W(a.x, a.y), $("#wsGridOverlay").bind("mousemove", va)) : y ? (a = W(a.x, a.y), U(a - 1, q, i), wa(a), setTimeout("unHighlightCells()", 300), y = k) : (y = W(a.x, a.y), U(y - 1, q, i))
 }
 
+// Called by m(a, c)
 function qa(a) {
     a = V(a);
     a = W(a.x, a.y);
@@ -526,6 +541,7 @@ function xa(a) {
     return -1
 }
 
+// Called by qa()
 function wa(a) {
     var c = y,
         b;
@@ -587,7 +603,8 @@ function tts(b){
 
     var msg = new SpeechSynthesisUtterance(b);
     var voices = window.speechSynthesis.getVoices();
-    console.log(voices);
+//    console.log(voices);
+    console.log("TEXTTOSPEECH");
     if (voices.length > 0) {
         msg.voice = voices[1];
         msg.lang = 'en-US';
@@ -633,10 +650,12 @@ function va(a) {
     Ca(q, "#3399FF", c, a)
 }
 
+// Clear board
 function X() {
     q.clearRect(0, 0, q.canvas.width, q.canvas.height)
 }
 
+// Highlighting word
 function Ca(a, c, b, j) {
     a.globalAlpha = 0.3;
     a.beginPath();
@@ -685,6 +704,7 @@ function Ba(a) {
     return b
 }
 
+// Called when game is finished, called by wa()
 function Aa() {
     Q = S() - P;
     localStorage.removeItem("savedState");
@@ -711,6 +731,7 @@ function za(a) {
     R.audio && ("success" == a && ja.play(), "fail" == a && ka.play(), "finished" == a && la.play())
 }
 
+// Play again
 function Da() {
     $.get("/api/logplayed/?id=" + ea, function() {})
 }
@@ -725,6 +746,7 @@ btnRescramble = function() {
     m(s)
 };
 
+// Settings
 function ca() {
     var a = localStorage.getItem("settings");
     return a === k ? (a = {

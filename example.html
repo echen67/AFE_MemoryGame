@@ -60,7 +60,9 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    loadGameDataWeb("{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":[\"Cow\",\"Goat\",\"Pig\",\"Buffalo\",\"Chicken\",\"Sheep\",\"Lamb\",\"Goose\",\"Turkey\",\"Duck\",\"Horse\",\"Cattle\",\"Llama\",\"Bison\"]}");
+    // to create new puzzle, you put the words into this function, loadGameDataWeb, as params
+    // this is done in the aa() function in full2.js
+    loadGameDataWeb("{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":[\"Cow\", \"Goat\", \"Pig\", \"Horse\", \"Sheep\", \"Lamb\", \"Chicken\"]}");
     init("gameGrid");
     addShares();
 });
