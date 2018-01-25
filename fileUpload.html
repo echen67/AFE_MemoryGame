@@ -10,10 +10,10 @@
 <br>
 <h4>Create New Word List: Upload File</h4>
 <form>
-    Display Name:  <input type = "text" name = "displayName" value = "">
+    Display Name:  <input type = "text" id = "displayN" value = "">
     <br>
     <br>
-    File Select:  <input type = "file" id = "uploadFile">
+    File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
 </form>
 <p>Add File</p>
 <button onclick = "upload()">UPLOAD</button>
@@ -21,8 +21,24 @@
 <button onclick = "back()">Back</button>
 <br>
 <button onclick = "help()">Help</button>
+<div id='output'>
+    ...
+</div>
 </body>
 <script>
+    var openFile = function(event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function(){
+          var text = reader.result;
+          var node = document.getElementById('output');
+          node.innerText = text;
+          console.log(reader.result.substring(0, 200));
+        };
+        reader.readAsText(input.files[0]);
+    };
+
     function upload(){
         window.location.href = "home.html";
     }
