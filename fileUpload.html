@@ -15,8 +15,9 @@
                 var s = 'Name: ' + file.name;
                 s += '<br>Type: ' + file.type;
                 s += '<br>Size: ' + file.size;
+                file.openFile(event);
                 s += "<br>====================================<br>"
-                document.getElementById('result').innerHTML = s;
+                document.getElementById('fileDetails').innerHTML = s;
             }
         }
 
@@ -36,36 +37,49 @@
                     s += "<br>===================================="
                 }
             }
-            document.getElementById('results').innerHTML = s;
+            document.getElementById('fileDetails').innerHTML = s;
         }
 
         var openFile = function(event) {
-        var input = event.target;
+            // ERROR Prevention: Check for the various File API support.
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+              // Great success! All the File APIs are supported.
+              var input = event.target;
+                var file = document.getElementById('uploadFile');
+                var s = 'Name: ' + file.name;
+                    s += '<br>Type: ' + file.type;
+                    s += '<br>Size: ' + file.size;
+                    s += "<br>====================================<br>"
+                    document.getElementById('fileDetails').innerHTML = s;
 
-        var reader = new FileReader();
-        reader.onload = function(){
-          var text = reader.result;
-          var node = document.getElementById('output');
-          node.innerText = text;
-          console.log(reader.result.substring(0, 200));
+                var reader = new FileReader();
+                reader.onload = function(){
+                  var text = reader.result; // contains all textual content from file
+                  var node = document.getElementById('output'); // sets the node to the div 'output'
+                  node.innerText = text; // displays the text to the HTML in the div 'output'
+                  console.log(reader.result.substring(0, 200));
+                };
+                reader.readAsText(input.files[0]);
+            } else {
+              alert('The File APIs are not fully supported in this browser.');
+            }
+
         };
-        reader.readAsText(input.files[0]);
-    };
 
-    // ---------------------------------------- BUTTON NAVIGATION
-    function upload(){
-        // insert LocalStorage code
-        window.location.href = "home.html";
-    }
-    function back(){
-        window.location.href = "home.html";
-    }
-    function help(){
-        window.location.href = "help.html";
-    }
-    function makeCustomList(){
-        window.location.href = "addWord.html";
-    }
+        // ---------------------------------------- BUTTON NAVIGATION
+        function upload(){
+            // insert LocalStorage code
+            window.location.href = "home.html";
+        }
+        function back(){
+            window.location.href = "home.html";
+        }
+        function help(){
+            window.location.href = "help.html";
+        }
+        function makeCustomList(){
+            window.location.href = "addWord.html";
+        }
     </script>
 </head>
 
@@ -73,39 +87,16 @@
     <h3>Word Find</h3>
     <button onclick = "makeCustomList()">Make Custom List</button>
     <br>
-    <fieldset>
-        <legend><h4>Create New Word List: Upload File</h4></legend>
-        Single List Upload
-        <br>
-        <br>
-        <form>
-            File: <input type="file" id="list" accept = 'text/plain' onchange="selectFile()">
-            <br>
-            <br>
-            <div id="result"></div>
-        </form>
-
-        Multiple List Upload
-        <br>
-        <br>
-        <form>
-            File: <input type="file" id="lists" accept = 'text/plain' onchange="selectFiles()" multiple="multiple">
-            <br>
-            <br>
-            <div id="results"></div>
-        </form>
-    </fieldset>
-    <!-- original code -->
-    <br>
     <h4>Create New Word List: Upload File</h4>
     <form>
-        Display Name:  <input type = "text" id = "displayN" value = "">
+        List Display Name:  <input type = "text" id = "displayN" value = "">
         <br>
         <br>
         File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
     </form>
+    <div id="fileDetails"></div>
     <!-- BUTTONS -->
-    <p>Add File</p> <!-- placeholder -->
+    <p>Add File</p> <!-- TODO: multiple file uploads -->
     <button onclick = "upload()">UPLOAD</button>
     <br>
     <button onclick = "back()">Back</button>
