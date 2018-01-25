@@ -43,15 +43,8 @@
         var openFile = function(event) {
             // ERROR Prevention: Check for the various File API support.
             if (window.File && window.FileReader && window.FileList && window.Blob) {
-              // Great success! All the File APIs are supported.
-              var input = event.target;
-                var file = document.getElementById('uploadFile');
-                var s = 'Name: ' + file.name;
-                    s += '<br>Type: ' + file.type;
-                    s += '<br>Size: ' + file.size;
-                    s += "<br>====================================<br>"
-                    document.getElementById('fileDetails').innerHTML = s;
-
+                // Great success! All the File APIs are supported.
+                var input = event.target;
                 var reader = new FileReader();
                 reader.onload = function(){
                   var text = reader.result; // contains all textual content from file
@@ -94,7 +87,6 @@
         <br>
         File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
     </form>
-    <div id="fileDetails"></div>
     <!-- BUTTONS -->
     <p>Add File</p> <!-- TODO: multiple file uploads -->
     <button onclick = "upload()">UPLOAD</button>
