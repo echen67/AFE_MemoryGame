@@ -3,30 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>File Upload</title>
-</head>
-<body>
-<h3>Word Find</h3>
-<button onclick = "makeCustomList()">Make Custom List</button>
-<br>
-<h4>Create New Word List: Upload File</h4>
-<form>
-    Display Name:  <input type = "text" id = "displayN" value = "">
-    <br>
-    <br>
-    File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
-</form>
-<p>Add File</p>
-<button onclick = "upload()">UPLOAD</button>
-<br>
-<button onclick = "back()">Back</button>
-<br>
-<button onclick = "help()">Help</button>
-<div id='output'>
-    ...
-</div>
-</body>
-<script>
-    var openFile = function(event) {
+
+    <script type="text/javascript">
+    // singular file uploads
+        function selectFile() {
+            var file = document.getElementById('list').files[0];
+            var textType = /text.*/;
+            if(!file.type.match(textType)) {
+                alert('Please select a word list saved as a .txt file.');
+            } else {
+                var s = 'Name: ' + file.name;
+                s += '<br>Type: ' + file.type;
+                s += '<br>Size: ' + file.size;
+                s += "<br>====================================<br>"
+                document.getElementById('result').innerHTML = s;
+            }
+        }
+
+        // multiple file uploads
+        function selectFiles() {
+            var fileUps = document.getElementById('lists').files;
+            var s = 'Number of files: ' + fileUps.length + '<br>';
+            for (i =0; i < fileUps.length; i++) {
+                var file = fileUps[i];
+                var textType = /text.*/;
+                if(!file.type.match(textType)) {
+                    alert(file.name + ' is not a valid file type. Please select a word list saved as a .txt file.');
+                } else {
+                    s += 'Name: ' + file.name;
+                    s += '<br>Type: ' + file.type;
+                    s += '<br>Size: ' + file.size;
+                    s += "<br>===================================="
+                }
+            }
+            document.getElementById('results').innerHTML = s;
+        }
+
+        var openFile = function(event) {
         var input = event.target;
 
         var reader = new FileReader();
@@ -39,7 +52,9 @@
         reader.readAsText(input.files[0]);
     };
 
+    // ---------------------------------------- BUTTON NAVIGATION
     function upload(){
+        // insert LocalStorage code
         window.location.href = "home.html";
     }
     function back(){
@@ -51,6 +66,53 @@
     function makeCustomList(){
         window.location.href = "addWord.html";
     }
-</script>
+    </script>
+</head>
 
+<body>
+    <h3>Word Find</h3>
+    <button onclick = "makeCustomList()">Make Custom List</button>
+    <br>
+    <fieldset>
+        <legend><h4>Create New Word List: Upload File</h4></legend>
+        Single List Upload
+        <br>
+        <br>
+        <form>
+            File: <input type="file" id="list" accept = 'text/plain' onchange="selectFile()">
+            <br>
+            <br>
+            <div id="result"></div>
+        </form>
+
+        Multiple List Upload
+        <br>
+        <br>
+        <form>
+            File: <input type="file" id="lists" accept = 'text/plain' onchange="selectFiles()" multiple="multiple">
+            <br>
+            <br>
+            <div id="results"></div>
+        </form>
+    </fieldset>
+    <!-- original code -->
+    <br>
+    <h4>Create New Word List: Upload File</h4>
+    <form>
+        Display Name:  <input type = "text" id = "displayN" value = "">
+        <br>
+        <br>
+        File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
+    </form>
+    <!-- BUTTONS -->
+    <p>Add File</p> <!-- placeholder -->
+    <button onclick = "upload()">UPLOAD</button>
+    <br>
+    <button onclick = "back()">Back</button>
+    <br>
+    <button onclick = "help()">Help</button>
+    <div id='output'>
+        ...
+    </div>
+</body>
 </html>
