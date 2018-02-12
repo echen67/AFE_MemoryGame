@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>File Upload</title>
-
+    <script type="text/javascript" src="js/localStorage.js"></script>
+    <noscript>alert('Sorry, your browser does not support JavaScript!');</noscript>
     <script type="text/javascript">
+
+    var array_to_store;
+    var name_to_store = "Name";
+
     // singular file uploads
         function selectFile() {
             var file = document.getElementById('list').files[0];
@@ -48,9 +53,12 @@
                 var reader = new FileReader();
                 reader.onload = function(){
                   var text = reader.result; // contains all textual content from file
-                  var node = document.getElementById('output'); // sets the node to the div 'output'
-                  node.innerText = text; // displays the text to the HTML in the div 'output'
-                  console.log(reader.result.substring(0, 200));
+                  //NEW NICOLE
+                  var tostore_pre = text.replace( /\n/g, " " ); //replace all newlines with spaces
+                  var tostore = tostore_pre.split(" "); //store each word as entry in new array
+                  console.log(tostore);
+                  array_to_store = tostore; //set global var
+                  //END NEW NICOLE
                 };
                 reader.readAsText(input.files[0]);
             } else {
@@ -62,7 +70,21 @@
         // ---------------------------------------- BUTTON NAVIGATION
         function upload(){
             // insert LocalStorage code
-            window.location.href = "home.html";
+            //NEW NICOLE
+            name_to_store = document.getElementById('displayN').value; //take file name from "List Display Name" textbox
+            //localStorage.setItem(name_to_store, array_to_store); //use global vars to save in loc storage REMOVE AFTER SPRINT 2
+            //END NEW NICOLE
+            //window.location.href = "home.html";
+
+            // Kim implement local storage javascript call
+            storeList(array_to_store, name_to_store);
+
+            /** TODO:   - accepting spaces between words (currently parsing file reader using spaces)
+                        - removing empty/null element at the end of the array_to_store (EX. someone has a bunch of empty lines at the end of their list or inbetween words)
+                        - special character/number removal (with alert pop up)
+                        - failed upload if text file is empty
+                        - elements being stored with "/r" in the array (why is this happening?)
+            **/
         }
         function back(){
             window.location.href = "home.html";
@@ -77,25 +99,26 @@
 </head>
 
 <body>
-    <h3>Word Find</h3>
-    <button onclick = "makeCustomList()">Make Custom List</button>
+<h3>Word Find</h3>
+<button onclick = "makeCustomList()">Make Custom List</button>
+<br>
+<h4>Create New Word List: Upload File</h4>
+<p>Upload a text file (.txt) with one word per line. Enter in list name.</p>
+<form>
+    List Display Name:  <input type = "text" id = "displayN" value = "">
     <br>
-    <h4>Create New Word List: Upload File</h4>
-    <form>
-        List Display Name:  <input type = "text" id = "displayN" value = "">
-        <br>
-        <br>
-        File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
-    </form>
-    <!-- BUTTONS -->
-    <p>Add File</p> <!-- TODO: multiple file uploads -->
-    <button onclick = "upload()">UPLOAD</button>
     <br>
-    <button onclick = "back()">Back</button>
-    <br>
-    <button onclick = "help()">Help</button>
-    <div id='output'>
-        ...
-    </div>
+    File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
+</form>
+<!-- BUTTONS -->
+<p>Add File</p> <!-- TODO: multiple file uploads -->
+<button onclick = "upload()">UPLOAD</button><button onclick="clearLists()">DEBUG: CLEAR</button>
+<br>
+<button onclick = "back()">Back</button>
+<br>
+<button onclick = "help()">Help</button>
+<!--<div id='output'>
+    ...
+</div>-->
 </body>
 </html>
