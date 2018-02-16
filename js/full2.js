@@ -305,6 +305,7 @@ function aa(a) {
 
 // Called at beginning, seems to be the main function creating the game
 function m(a, c) {
+    //a = gameGrid
     s = a;
     try {
         var b = new Audio("");
@@ -324,7 +325,9 @@ function m(a, c) {
     p = oa("wsGridOverlay", N, O, a);
     p.setAttribute("style", "position:absolute;top:0px;left:0px;");
     q = p.getContext("2d");
+    //console.log("mehh" + c);
     if (c) {
+        console.log("c;" + c);
         for (var d = 0; d < w.length; d++) w[d].d = l;
         $("#wsGridOverlay").bind("mousedown", pa);
         R.dragSelect && $("#wsGridOverlay").bind("mouseup", qa);
@@ -333,6 +336,7 @@ function m(a, c) {
         P = S()
     } else if (M = [], w = [], L = [], $("#wsGridOverlay").bind("mousedown", pa), R.dragSelect &&
         $("#wsGridOverlay").bind("mouseup", qa), $("#wsGrid").bind("mousedown", ra), ia) {
+        console.log("elseif");
         if (d = localStorage.getItem("savedState"), d !== k) {
             d = JSON.parse(d);
             M = d.n;
@@ -340,6 +344,7 @@ function m(a, c) {
             v = d.p;
             Q = d.q;
             P = S() - Q;
+            //console.log("d: " + d);  // did not show up, will test more later
             for (d = 0; d < w.length; d++)
                 if (w[d].d == i) {
                     sa(d, w[d].f, w[d].h);
@@ -353,8 +358,10 @@ function m(a, c) {
                 }
         }
     } else {
+        //console.log("else");
         -1 == v ? (b = [], b[0] = Math.floor(Math.random() * u.c.length), b[1] = Math.floor(Math.random() * u.c[b[0]].e.length)) : (b = v.toString().split("."), b[1] || (b[1] = 0));
         ea = u.c[b[0]].e[b[1]].id;
+        //console.log(u.c[b[0]].e[b[1]]);   // includes id, title, and list of words
         for (h = 0; h < u.c[b[0]].e[b[1]].j.length; h++) {
             var f = {};
             f.i = u.c[b[0]].e[b[1]].j[h].toUpperCase();
@@ -363,28 +370,40 @@ function m(a, c) {
             f.f = k;
             f.h = k;
             w[h] = f
+            //console.log(w[h].i);
+            //console.log(f.i); //prints out word
         }
         for (b = 0; b < w.length; b++) {
             var B, h = w[b].g.length,
                 f = "tb,tb,tb,lr,lr,lr".split(",");
+            R.allowReverseWords = false;    //added by me
             R.allowReverseWords == i && (f = f.concat(["rl", "rl", "bt", "bt"]));
-            h <= Math.min(F, G) && (R.allowDiagonalWords == i && (f = f.concat(["tlbr", "tlbr", "bltr"])), R.allowReverseWords == i && R.allowDiagonalWords == i && (f = f.concat(["trbl", "brtl"])));
+            h <= Math.min(F, G) && (R.allowDiagonalWords == i && (f = f.concat(["tlbr", "tlbr", "bltr"])), R.allowReverseWords == false && R.allowDiagonalWords == i /*&& (f = f.concat(["trbl", "brtl"]))*/); // comment out to prevent reverse words?
             h > F && (T(f, "lr"), T(f, "rl"));
             h > G && (T(f, "tb"), T(f, "bt"));
             B = f[Math.floor(Math.random() * f.length)];
+            //console.log(R.allowReverseWords);
             var h = w[b].g,
                 f = B,
                 x = [],
                 t = 0;
+            //console.log(G); //some number
+            //console.log(h); // prints out individual word
+            //console.log(f); // prints out tlbr stuff, which essentially tells you which direction the word goes in
+                            // bt, rl, brtl, trbl are bad
             if ("lr" == f || "rl" == f) {
                 for (var g = 0; g < h.length; g++) x[g] = h[g];
                 "rl" == f && x.reverse()
+                //console.log("1: " + x); // deals with horizontal
             } else if ("tb" == f || "bt" == f) {
                 for (g = 0; g < h.length; g++) t = 0 == g ? 0 : g * F, x[t] = h[g];
                 "bt" == f && x.reverse()
+                //console.log("2: " + x); // deals with vertical
             } else if ("tlbr" == f || "brtl" == f) {
                 "brtl" == f && (h = h.reverse());
-                for (g = 0; g < h.length; g++) t = 0 == g ? 0 : g * F + g, x[t] = h[g]
+                for (g = 0; g < h.length; g++) t = 0 == g ? 0 : g * F + g, x[t] = h[g]; // this line is needed to create the word in the word bank
+                //console.log(x); // x sets the word in the board
+                //console.log("3: " + h);
             } else if ("trbl" == f || "bltr" == f) {
                 "bltr" == f && (h = h.reverse());
                 for (g = 0; g < h.length; g++) t = 0 == g ? h.length - 1 : g * F - g + (h.length - 1), x[t] = h[g];
@@ -428,12 +447,15 @@ function m(a, c) {
             f || (w.splice(b, 1), b--)
         }
         d = "";
-        for (e = 0; e < w.length; e++) d += w[e].g;
+        for (e = 0; e < w.length; e++) d += w[e].g; // d is all of the words in one long string
         for (e = 0; e < ha; e++) R.kidMode && M[e] == k ? M[e] = " " : M[e] == k && (M[e] = d.charAt(Math.floor(Math.random() * d.length)));
-        P = S()
+        //console.log(M); // M is the entire board as an array of strings, left to right, top to bottom
+        P = S();
+        //console.log(P); // P is some random number hmm; but S() doesn't seem too important anyhow
     }
     for (d = 0; d < ha; d++) U(d, o);
-    ta()
+    //console.log(o); // o is CanvasRenderingContext2D
+    ta();
 }
 
 function S() {
@@ -450,7 +472,10 @@ function oa(a, c, b, j) {
     return d
 }
 
+// Called by function m() at the end
 function ta() {
+    // J, K, random numbers
+    // l = boolean
     if (!(1 > J && 1 > K)) {
         var a = l;
         0 < K && (a = i);
@@ -471,6 +496,7 @@ function ta() {
             o.fillText(w[d].i, c, b);
             w[d].d && (o.globalAlpha = 0.8, o.strokeStyle = ua(d), o.beginPath(), o.lineWidth = 2, o.lineCap = "round", o.moveTo(c, b), o.lineTo(c + e, b), o.stroke(), o.globalAlpha =
                 1);
+            //console.log(e);
             if (w[d].d == l) {
                 var h = {};
                 h.x = c;
@@ -479,12 +505,15 @@ function ta() {
                 h.m = h.y + 30;
                 h.k = d;
                 L[L.length] = h
+                //console.log(h.k);
             }
         }
     }
 }
 
 function T(a, c) {
+    console.log("T");
+    console.log("a: " + a);
     for (var b = 0; b < a.length; b++) a[b] == c && (a.splice(b, 1), b--)
 }
 String.prototype.reverse = function() {
@@ -509,10 +538,12 @@ function pa(a) {
     if (!(a.x <= C || a.y <= C) && !(a.x >= N - C || a.y >= O - C)) R.dragSelect ? (y = W(a.x, a.y), $("#wsGridOverlay").bind("mousemove", va)) : y ? (a = W(a.x, a.y), U(a - 1, q, i), wa(a), setTimeout("unHighlightCells()", 300), y = k) : (y = W(a.x, a.y), U(y - 1, q, i))
 }
 
-// Called by m(a, c)
+// Called by m(a, c), when word is found
 function qa(a) {
+//    console.log("QA");
     a = V(a);
     a = W(a.x, a.y);
+    //console.log(a);
     R.dragSelect && $("#wsGridOverlay").unbind("mousemove");
     X();
     wa(a)
@@ -527,7 +558,9 @@ function ba() {
     X()
 }
 
+// Called when mouse released on gamegrid after trying to highlight word
 function xa(a) {
+//    console.log("xa");
     for (var c = 0; c < w.length; c++)
         if (a == w[c].g) return w[c].d ? -1 : c;
     a = a.reverse();
@@ -538,7 +571,7 @@ function xa(a) {
     return -1
 }
 
-// Called by qa()
+// Called by qa(); seems to be called when word is found
 function wa(a) {
     var c = y,
         b;
@@ -623,7 +656,9 @@ function tts(wordFound){
     }
 }
 
+// Called when word is found
 function sa(a, c, b) {
+//    console.log("sa");
     c = Ba(c);
     c.x = c.x - z / 2 + C;
     c.y = c.y - z / 2 + C;
@@ -633,12 +668,16 @@ function sa(a, c, b) {
     Ca(o, ua(a), c, b)
 }
 
+// Called when word is found?
 function ua(a) {
+//    console.log("ua");
     for (; a >= D.length;) a -= D.length;
     return D[a]
 }
 
+// Called while highlighting a word, but not yet released
 function va(a) {
+//    console.log("va");
     var a = V(a),
         c = Ba(y);
     c.x = c.x - z / 2 + C;
@@ -652,7 +691,7 @@ function X() {
     q.clearRect(0, 0, q.canvas.width, q.canvas.height)
 }
 
-// Highlighting word
+// Called while highlighting word, but not yet released
 function Ca(a, c, b, j) {
     a.globalAlpha = 0.3;
     a.beginPath();
@@ -664,35 +703,47 @@ function Ca(a, c, b, j) {
     a.stroke()
 }
 
+// Called when word in word bank is clicked
 function V(a) {
+//    console.log("VA");
     for (var c = n, b = 0, j = 0; c && "BODY" != c.tagName;) b += c.offsetTop, j += c.offsetLeft, c = c.offsetParent;
     ma = b;
     na = j;
-    c = {};
+//    console.log(ma, na, c);
+    c = {};     // Basically, c is just the coordinates of the word in the word bank
     c.x = a.clientX - na + window.pageXOffset;
     c.y = a.clientY - ma + window.pageYOffset;
+//    console.log(a.clientX);
     return c
 }
 
+// Called when mousedown AND mouseup on the gamegrid
 function W(a, c) {
+//    console.log("WWWW");
     var b = z + A;
     return Y(Math.ceil((c - A / 2 - C) / b), Math.ceil((a - A / 2 - C) / b))
 }
 
+// Called when mousedown AND mouseup on the gamegrid
 function Y(a, c) {
+//    console.log("YYY");
     var b = 0;
     0 < c && 0 < a && (b = a * F + c - F);
     return b
 }
 
+// Called while highlighting word, but not yet released
 function ya(a) {
+//    console.log("ya");
     var c = {};
     c.b = Math.ceil(a / F);
     c.a = a - (c.b - 1) * F;
     return c
 }
 
+// Called while highlighting word, but not yet released
 function Ba(a) {
+//    console.log("Ba");
     var a = ya(a),
         c = z + A,
         b = {};
@@ -782,15 +833,15 @@ $().ready(function() {
     a = a + '<p class="tt">Drag : Selects words in grid by dragging across the hidden word<br />Tap : Selects words by taping the first and last letters in the grid</p>' + Z("kidMode", "Kids Mode", "Off", "On");
     a = a + '<p class="tt">Extra letters will no be added to the game grid making it easier to find the words</p></div><div style="float:left;width:50%">' +
         Z("allowHints", "Allow Hints", "Off", "On");
-    a = a + '<p class="tt">When ON, taping on a word will highlight it\'s first letter in the grid</p>' + Z("allowReverseWords", "Allow Reverse Words", "Off", "On");
-    a = a + '<p class="tt">When ON, words can appear in grid in reverse, either Right->Left  or Bottom->Top</p>' + Z("allowDiagonalWords", "Allow Diagonal Words", "Off", "On");
+    a = a + '<p class="tt">When ON, taping on a word will highlight it\'s first letter in the grid</p>' /*+ Z("allowReverseWords", "Allow Reverse Words", "Off", "On");*/
+    a = a /*+ '<p class="tt">When ON, words can appear in grid in reverse, either Right->Left  or Bottom->Top</p>'*/ + Z("allowDiagonalWords", "Allow Diagonal Words", "Off", "On");
     $("#settings").html(a + '<p class="tt">When ON, words can appear diagonally in the grid. If reverse setting above is also on, then words may appear diagonally reversed</p></div></div><div style="clear:both">');
     $("#audioFlip").val(R.audio.toString());
     $("#showGridFlip").val(R.showGrid.toString());
     $("#dragSelectFlip").val(R.dragSelect.toString());
     $("#kidModeFlip").val(R.kidMode.toString());
     $("#allowHintsFlip").val(R.allowHints.toString());
-    $("#allowReverseWordsFlip").val(R.allowReverseWords.toString());
+    /*$("#allowReverseWordsFlip").val(R.allowReverseWords.toString());*/
     $("#allowDiagonalWordsFlip").val(R.allowDiagonalWords.toString());
     $("#settings").jqm({
         o: i,
