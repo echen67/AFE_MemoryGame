@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-<h3>Word Find</h3>
-<select id = "listChoice">
-    <option value = "">Select Word List</option>
-    <option value = "example.html"> Word List One</option>
-</select>
-<button onclick = "playGame()">Play</button>
-<br>
-<a href="fileUpload.html">Create New Word List</a>
-</body>
-<script type = "text/javascript">
-    function playGame(){
-        var ls = document.getElementById("listChoice");
-        if (ls.selectedIndex !== 0){
-            window.location.href = ls.children[ls.selectedIndex].value;
-        }
-    }
-</script>
-
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <script type="text/javascript" src="js/localStorage.js"></script>
+        <noscript>alert('Sorry, your browser does not support JavaScript!');</noscript>
+        <script type = "text/javascript">
+            function playGame(){
+                var ls = document.getElementById("listChoice");
+                if (ls.selectedIndex !== 0){
+                    window.location.href = ls.children[ls.selectedIndex].value;
+                }
+            }
+        </script>
+    </head>
+    <body onload="fetchLists()"> <!-- fetchLists() updates the drop down list select element -->
+        <h3>Word Find</h3>
+        <select id="dropdownList">
+            <option value="Empty.">Select a word list.</option>
+        </select>
+        <button onclick = "playGame()">Play</button>
+    <!-- TODO: pass in puzzle selected to playGame() -->
+        <br>
+        <a href="fileUpload.html">Create New Word List</a>
+    </body>
 </html>

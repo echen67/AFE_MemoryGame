@@ -634,25 +634,39 @@ function wa(a) {
 
         } else za("fail")
 }
-
+var count = 0
 function tts(wordFound){
     //Set up Google TTS
     var msg = new SpeechSynthesisUtterance(wordFound);
 
     // Get list of voices to get female voice
     var voices = window.speechSynthesis.getVoices();
+
+
+
     // if voices is loaded
     if (voices.length > 0) {
-        msg.voice = voices[1];
+        msg.voice = voices[3];
+
         msg.lang = 'en-US';
         window.speechSynthesis.speak(msg);
     } else {
+
         // wait on voices to be loaded before fetching list
+
         window.speechSynthesis.onvoiceschanged = function() {
-            msg.voice = window.speechSynthesis.getVoices()[1];
+         if(count == 0){
+
+                count = count + 1;
+
+            msg.voice = window.speechSynthesis.getVoices()[3];
             msg.lang = 'en-US';
+            console.log("hess")
             window.speechSynthesis.speak(msg);
+             }
         };
+
+
     }
 }
 

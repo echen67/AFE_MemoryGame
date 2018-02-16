@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help</title>
+</head>
+<script>
+    function back(){
+        window.history.back();
+    }
+</script>
+<body>
+<h3>Word Find</h3>
+<h4>Help</h4>
+<p>In the 'File Upload' page, you can create new word lists by
+    uploading text files. You can switch to 'Make Custom List' mode
+    by clicking the tab at the top right corner.
+</p>
+<h5>Before you start:</h5>
+<p>The 'File Upload' page takes in a text file in a certain format. Be sure
+    your text file follows the following format:</p>
+<ul>
+    <li>Each word is on its own line</li>
+    <li>No special characters or numbers are included</li>
+</ul>
+<h5>How to Upload File:</h5>
+<ol>
+    <li>Press the 'Browse' button to open your file explorer</li>
+    <li>Selected the formatted word list file and click 'Open.'</li>
+    <li>The location of the file and the file name will automatically be filled.</li>
+    <li>You can rename the word list in the 'Display Name'</li>
+    <li>Press 'Upload' to create the new list</li>
+</ol>
+<ul>
+    <li>Press the '+' button to add multiple files to upload at once.
+        (NOTE:Each file is a separate word list.)</li>
+    <li>Press 'X' button to remove file upload instance.</li>
+    <li>Recommended to name the puzzle something unique and descriptive.</li>
+</ul>
+<button onclick = "back()">Back</button>
+</body>
+
+</html>
