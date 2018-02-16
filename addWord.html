@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Make Custom List</title>
-</head>
-<body>
-<h3>Word Find</h3>
-<button onclick = "fileUpload()">File Upload</button>
-<h4>Create New Word List: Custom List</h4>
-<form>
-    Display Name:<input type = "text" name = "displayName" value = "">
-</form>
-<button onclick = "savePuzzle()">Save Puzzle</button>
-<br>
-<button onclick = "back()">Back</button>
-<br>
-<button onclick = "help()">Help</button>
-</body>
-<script>
-    function savePuzzle(){
-        window.location.href = "home.html";
-    }
-    function back(){
-        window.location.href = "home.html";
-    }
-    function help(){
-        window.location.href = "help.html";
-    }
-    function fileUpload(){
-        window.location.href = "fileUpload.html";
-    }
-</script>
-
+    <head>
+        <meta charset="UTF-8">
+        <title>Make Custom List</title>
+        <script type="text/javascript" src="js/localStorage.js"></script>
+        <noscript>alert('Sorry, your browser does not support JavaScript!');</noscript>
+        <script>
+            /** function savePuzzle(){
+                window.location.href = "home.html";
+            } REMOVE AFTER SPRINT 2**/
+            function back(){
+                window.location.href = "home.html";
+            }
+            function help(){
+                window.location.href = "help.html";
+            }
+            function fileUpload(){
+                window.location.href = "fileUpload.html";
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Word Find</h3>
+        <button onclick = "fileUpload()">File Upload</button>
+        <h4>Create New Word List: Custom List</h4>
+        <form>
+            <h1 id="list_name" contenteditable="true">Enter List Name</h1>
+            <ol id="list_items" contenteditable="true">
+                <li>Enter words</li>
+            </ol>
+        </form>
+        <button onclick = "createCustomArray()">Save Puzzle</button><button onclick="clearLists()">DEBUG: CLEAR</button>
+        <br>
+        <button onclick = "back()">Back</button>
+        <br>
+        <button onclick = "help()">Help</button>
+    </body>
 </html>
