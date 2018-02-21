@@ -286,6 +286,9 @@ var n = k,
     P = k,
     Q = 0,
     ja, ka, la, ma, na, R = ca();
+    orig = [];              // added by me to fix word bank bug
+    origFlag = false;
+    //audioButton = document.getElementById("audioGraphic")
 
 // Called in beginning; seems to contain the list of words, and gets passed into loadGameDataWeb
 function aa(a) {
@@ -331,11 +334,11 @@ function m(a, c) {
         for (var d = 0; d < w.length; d++) w[d].d = l;
         $("#wsGridOverlay").bind("mousedown", pa);
         R.dragSelect && $("#wsGridOverlay").bind("mouseup", qa);
-        $("#wsGrid").bind("mousedown", ra);
+        $("#wsGrid").bind("mousedown", ra);     // RA CALLED HERE ------------------------------------------------------
 
         P = S()
     } else if (M = [], w = [], L = [], $("#wsGridOverlay").bind("mousedown", pa), R.dragSelect &&
-        $("#wsGridOverlay").bind("mouseup", qa), $("#wsGrid").bind("mousedown", ra), ia) {
+        $("#wsGridOverlay").bind("mouseup", qa), $("#wsGrid").bind("mousedown", ra), ia) {      // RA CALLED HERE ------
         console.log("elseif");
         if (d = localStorage.getItem("savedState"), d !== k) {
             d = JSON.parse(d);
@@ -377,7 +380,7 @@ function m(a, c) {
             var B, h = w[b].g.length,
                 f = "tb,tb,tb,lr,lr,lr".split(",");
             R.allowReverseWords = false;    //added by me
-            R.allowReverseWords == i && (f = f.concat(["rl", "rl", "bt", "bt"]));
+            //R.allowReverseWords == i && (f = f.concat(["rl", "rl", "bt", "bt"]));
             h <= Math.min(F, G) && (R.allowDiagonalWords == i && (f = f.concat(["tlbr", "tlbr", "bltr"])), R.allowReverseWords == false && R.allowDiagonalWords == i /*&& (f = f.concat(["trbl", "brtl"]))*/); // comment out to prevent reverse words?
             h > F && (T(f, "lr"), T(f, "rl"));
             h > G && (T(f, "tb"), T(f, "bt"));
@@ -387,7 +390,7 @@ function m(a, c) {
                 f = B,
                 x = [],
                 t = 0;
-            //console.log(G); //some number
+            //console.log(G); // some number
             //console.log(h); // prints out individual word
             //console.log(f); // prints out tlbr stuff, which essentially tells you which direction the word goes in
                             // bt, rl, brtl, trbl are bad
@@ -488,12 +491,17 @@ function ta() {
         o.globalAlpha = 1;
         o.font = ga;
         L = [];
+        c += 20;    // Add 20 to c in order to move text to the right
         for (var d = 0; d < w.length; d++) {
             var e = o.measureText(w[d].i).width;
             a ? (j + e + 10 > N ? (c = 8, b += 30, j = 8) : c = j, j = j + e + 10) : b += 30;
             o.textBaseline = "middle";
             o.fillStyle = w[d].d ? "#777" : "#000";
+            // HERE IS WHERE YOU WRITE THE WORD IN THE WORD BANK -------------------------------------------------------
             o.fillText(w[d].i, c, b);
+            console.log(c, b);    // c and b are the coordinates to write the text at
+            audioButton = document.getElementById("audioGraphic")
+            o.drawImage(audioButton, 630, b-10, 20, 20);    // PROBLEM: YOU NEED TO EXTEND THE AREA WHERE THE AUDIO IS TRIGGERED TO INCLUDE AUDIO BUTTON
             w[d].d && (o.globalAlpha = 0.8, o.strokeStyle = ua(d), o.beginPath(), o.lineWidth = 2, o.lineCap = "round", o.moveTo(c, b), o.lineTo(c + e, b), o.stroke(), o.globalAlpha =
                 1);
             //console.log(e);
@@ -506,8 +514,15 @@ function ta() {
                 h.k = d;
                 L[L.length] = h
                 //console.log(h.k);
+                //console.log(L);
             }
         }
+        if (!origFlag) {
+            orig = L;
+            origFlag = true;
+        }
+        //console.log("orig");
+        //console.log(orig);
     }
 }
 
@@ -520,6 +535,7 @@ String.prototype.reverse = function() {
     return this.split("").reverse().join("")
 };
 
+// Called in ra(), but also by something else a lot it seems
 function U(a, c, b) {
     var j = Math.floor(a / F + 1) * (z + A) - (z + A) + C,
         d = Math.floor(a % F + 1) * (z + A) - (z + A) + C;
@@ -530,10 +546,14 @@ function U(a, c, b) {
     c.textBaseline = "middle";
     c.fillStyle = "#000";
     b = c.measureText(M[a]).width;
+    //console.log("U");
+    //console.log(M[a]);    // prints out every letter in the board
     c.fillText(M[a], d + Math.floor((z - b) / 2), j + z / 2 + 1)
 }
 
+// Called when gamegrid is clicked
 function pa(a) {
+    //console.log("pa");
     a = V(a);
     if (!(a.x <= C || a.y <= C) && !(a.x >= N - C || a.y >= O - C)) R.dragSelect ? (y = W(a.x, a.y), $("#wsGridOverlay").bind("mousemove", va)) : y ? (a = W(a.x, a.y), U(a - 1, q, i), wa(a), setTimeout("unHighlightCells()", 300), y = k) : (y = W(a.x, a.y), U(y - 1, q, i))
 }
@@ -549,9 +569,28 @@ function qa(a) {
     wa(a)
 }
 
+// CALLED WHEN WORD IN WORD BANK IS CLICKED
+// called from m(), when binding wsGrid
 function ra(a) {
+    //console.log("RA");
+    //console.log(a);
     if (R.allowHints)
-        for (var a = V(a), c = 0; c < L.length; c++) a.x >= L[c].x && a.x <= L[c].l && a.y >= L[c].y && a.y <= L[c].m && (X(), y = w[L[c].k].f, U(y - 1, q, i))
+        //console.log(L);
+        console.log(orig);
+        //console.log(y);     // this is the position of the hint in the gamegrid
+        for (var a = V(a), c = 0; c < L.length; c++) {
+            a.x >= orig[c].x-25 && a.x <= orig[c].l && a.y >= orig[c].y && a.y <= orig[c].m && (X(), (y = w[orig[c].k].d ? -1 : w[orig[c].k].f), U(y - 1, q, i), wrd = w[orig[c].k], tts(wrd.i));
+            // SUBTRACT 25 FROM ORIG[C].X ABOVE IN ORDER TO EXTEND HIT BOX IN INCLUDE AUDIO BUTTON
+            //y = wrd.d ? -1 : w[orig[c].k].f;  // my fix
+            //y = w[orig[c].k].f    // original code
+        }
+        // wrd.d tells you whether a word has been found yet
+        //tts(wrd.i); // THIS CAUSES WORD TO BE SPOKEN WHEN CLICKED ON IN THE WORD BANK ----------------------------------
+                    // PROBLEM: STOPS WORKING WHEN CROSSED OUT; WILL SIMPLY REPEAT THE LAST WORD CLICKED
+                    // OKAY, FIXED BY MAKING A COPY OF L NAMED ORIG AND USING THAT INSTEAD
+                    // NEW MINOR PROBLEM: HINT STILL APPEARS FOR ALREADY FOUND WORDS
+                    // SOLVED BY SETTING Y = -1 IF WORD HAS ALREADY BEEN FOUND
+                    // UPDATE: MOVED TTS TO INSIDE LOOP UP THERE SO THAT WORD IS NOT SPOKEN WHEN CANVAS, BUT NOT WORD IS CLICKED
 }
 
 function ba() {
@@ -573,6 +612,7 @@ function xa(a) {
 
 // Called by qa(); seems to be called when word is found
 function wa(a) {
+    console.log("wa");
     var c = y,
         b;
     a: if (c == a) b = "";
@@ -661,7 +701,7 @@ function tts(wordFound){
 
             msg.voice = window.speechSynthesis.getVoices()[3];
             msg.lang = 'en-US';
-            console.log("hess")
+            //console.log("hess")
             window.speechSynthesis.speak(msg);
              }
         };
@@ -717,9 +757,10 @@ function Ca(a, c, b, j) {
     a.stroke()
 }
 
-// Called when word in word bank is clicked
+// Called when word in word bank is clicked, but also when it is clicked on in gamegrid
+// Called by va(), ra(), ...???
 function V(a) {
-//    console.log("VA");
+    //console.log("VA");
     for (var c = n, b = 0, j = 0; c && "BODY" != c.tagName;) b += c.offsetTop, j += c.offsetLeft, c = c.offsetParent;
     ma = b;
     na = j;
