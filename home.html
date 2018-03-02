@@ -15,6 +15,9 @@
                 setList(ls);
                 window.location.href = "example.html?" + ls;
             }
+            function help(){
+            window.location.href = "idexHelp.html";
+        }
         </script>
     </head>
     <body onload="fetchLists()"> <!-- fetchLists() updates the drop down list select element -->
@@ -26,5 +29,7 @@
     <!-- TODO: pass in puzzle selected to playGame() -->
         <br>
         <a href="fileUpload.html">Create New Word List</a>
+    <br>
+    <button onclick = "help()">Help</button>
     </body>
 </html>
