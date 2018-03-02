@@ -1,6 +1,5 @@
 function createCustomArray() {
     var listName = document.getElementById("list_name").textContent; // retrieves list name from HTML
-
     // check if list name is not empty
     if (listName == "") {
         alert("Failed list creation.\n\nPlease enter valid list name.");
@@ -10,8 +9,16 @@ function createCustomArray() {
     var wordList = document.getElementById('list_items');
     var listElements = wordList.getElementsByTagName('li'); // grabs the words from the list
     var array = new Array();
+    if (listElements.length == 0) {
+        // deleted format for the HTML list (<li> is not null)
+        alert("Failed list creation.\n\nNo list found. Please refresh page to return to proper list format.");
+        return;
+    }
     for (var i = 0; i < listElements.length; i++) {
-        array.push(listElements[i].innerText) // stores words as an array
+        var word = listElements[i].innerText;
+        if (word != "" && word != "\n") { // checks so no empty lines are stored
+            array.push(listElements[i].innerText) // stores words as an array
+        }
     }
 
     // check if contents are populated
@@ -22,6 +29,10 @@ function createCustomArray() {
 
     storeList(array, listName);
 }
+
+// JQuery for no-number text input - TODO
+
+// Check for profanity - TODO
 
 function storeList(array, listName) {
     // localStorage.clear(); // DEBUG
