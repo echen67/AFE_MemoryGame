@@ -7,10 +7,13 @@
         <noscript>alert('Sorry, your browser does not support JavaScript!');</noscript>
         <script type = "text/javascript">
             function playGame(){
-                var ls = document.getElementById("listChoice");
+                /*var ls = document.getElementById("listChoice");
                 if (ls.selectedIndex !== 0){
                     window.location.href = ls.children[ls.selectedIndex].value;
-                }
+                }*/
+                var ls = document.getElementById("dropdownList").value;
+                setList(ls);
+                window.location.href = "example.html?" + ls;
             }
         </script>
     </head>

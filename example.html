@@ -11,6 +11,7 @@
 
 <!-- <link href='//fonts.googleapis.com/css?family=Lato:900italic' rel='stylesheet' type='text/css'> -->
 <script src="../AFE_MemoryGame/js/full2.js"></script>
+<script type="text/javascript" src="js/localStorage.js"></script>
 <link rel="canonical" href="https://thewordsearch.com/puzzle/7/farm-animals/">
 <meta property="og:image" content="https://thewordsearch.com/static/promo/7.png"><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
 <img id="audioGraphic" src="../AFE_MemoryGame/audio.png" width="50" height="50"> <!-- CREDIT: Audio by Martyn Jasinski from the Noun Project -->
@@ -43,34 +44,33 @@
         </div>
     </div>
 
+    <button onclick = "back()">Back</button>
+
 
 
 <div id="settings" class="jqmWindow"></div>
 
-
-        <!--<script type="text/javascript">-->
-        <!--function tts(){-->
-       <!--var msg = new SpeechSynthesisUtterance('Hello World');-->
-
-        <!--msg.text = '';-->
-        <!--msg.lang = 'en-US';-->
-        <!--window.speechSynthesis.speak(msg);-->
-       <!--}-->
-  <!--</script>-->
-
-        <!--<script>tts();</script>-->
+<script>
+function back(){
+    window.location.href = "home.html";
+}
+</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
     // to create new puzzle, you put the words into this function, loadGameDataWeb, as params
     // this is done in the aa() function in full2.js
-    loadGameDataWeb("{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":[\"Cow\", \"Goat\", \"Pig\", \"Horse\", \"Sheep\", \"Lamb\", \"Chicken\", \"Turkey\", \"Buffalo\", \"Bison\", \"Beef\", \"Pork\", \"Veal\", \"Venison\", \"Alligator\", \"Elk\", \"Deer\", \"Ant\", \"Duck\", \"Swan\", \"Shark\"]}");
+
+    var url = window.location.href;
+    url = url.split("?");
+    url = url[1];
+    var ls = localStorage.getItem(url);
+    var header = "{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":" + ls.toString() + "}";
+    var str = "{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":[\"Cow\", \"Goat\", \"Pig\", \"Horse\", \"Sheep\", \"Lamb\", \"Chicken\", \"Turkey\", \"Buffalo\", \"Bison\", \"Beef\", \"Pork\", \"Veal\", \"Venison\", \"Alligator\", \"Elk\", \"Deer\", \"Ant\", \"Duck\", \"Swan\", \"Shark\"]}";
+    loadGameDataWeb(header);
     init("gameGrid");
     addShares();
 });
-
-
-
 </script>    </section>
 
     <div id="copyright">&copy; TheWordSearch.com</div>

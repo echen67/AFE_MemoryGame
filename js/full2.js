@@ -330,7 +330,7 @@ function m(a, c) {
     q = p.getContext("2d");
     //console.log("mehh" + c);
     if (c) {
-        console.log("c;" + c);
+        //console.log("c;" + c);
         for (var d = 0; d < w.length; d++) w[d].d = l;
         $("#wsGridOverlay").bind("mousedown", pa);
         R.dragSelect && $("#wsGridOverlay").bind("mouseup", qa);
@@ -339,7 +339,7 @@ function m(a, c) {
         P = S()
     } else if (M = [], w = [], L = [], $("#wsGridOverlay").bind("mousedown", pa), R.dragSelect &&
         $("#wsGridOverlay").bind("mouseup", qa), $("#wsGrid").bind("mousedown", ra), ia) {      // RA CALLED HERE ------
-        console.log("elseif");
+        //console.log("elseif");
         if (d = localStorage.getItem("savedState"), d !== k) {
             d = JSON.parse(d);
             M = d.n;
@@ -368,11 +368,12 @@ function m(a, c) {
         for (h = 0; h < u.c[b[0]].e[b[1]].j.length; h++) {
             var f = {};
             f.i = u.c[b[0]].e[b[1]].j[h].toUpperCase();
-            f.g = f.i.replace(/[ '-.]/gi, "");
+            f.g = f.i.replace(/[ '-.]/gi, "");  //getting rid of space or hyphen
+            //console.log(f.g);
             f.d = l;
             f.f = k;
             f.h = k;
-            w[h] = f
+            w[h] = f;
             //console.log(w[h].i);
             //console.log(f.i); //prints out word
         }
@@ -499,7 +500,7 @@ function ta() {
             o.fillStyle = w[d].d ? "#777" : "#000";
             // HERE IS WHERE YOU WRITE THE WORD IN THE WORD BANK -------------------------------------------------------
             o.fillText(w[d].i, c, b);
-            console.log(c, b);    // c and b are the coordinates to write the text at
+            //console.log(c, b);    // c and b are the coordinates to write the text at
             audioButton = document.getElementById("audioGraphic")
             o.drawImage(audioButton, 630, b-10, 20, 20);    // PROBLEM: YOU NEED TO EXTEND THE AREA WHERE THE AUDIO IS TRIGGERED TO INCLUDE AUDIO BUTTON
             w[d].d && (o.globalAlpha = 0.8, o.strokeStyle = ua(d), o.beginPath(), o.lineWidth = 2, o.lineCap = "round", o.moveTo(c, b), o.lineTo(c + e, b), o.stroke(), o.globalAlpha =
@@ -527,8 +528,8 @@ function ta() {
 }
 
 function T(a, c) {
-    console.log("T");
-    console.log("a: " + a);
+    //console.log("T");
+    //console.log("a: " + a);
     for (var b = 0; b < a.length; b++) a[b] == c && (a.splice(b, 1), b--)
 }
 String.prototype.reverse = function() {
@@ -576,13 +577,13 @@ function ra(a) {
     //console.log(a);
     if (R.allowHints)
         //console.log(L);
-        console.log(orig);
+        //console.log(orig);
         //console.log(y);     // this is the position of the hint in the gamegrid
-        for (var a = V(a), c = 0; c < L.length; c++) {
+        for (var a = V(a), c = 0; c < orig.length; c++) {
             a.x >= orig[c].x-25 && a.x <= orig[c].l && a.y >= orig[c].y && a.y <= orig[c].m && (X(), (y = w[orig[c].k].d ? -1 : w[orig[c].k].f), U(y - 1, q, i), wrd = w[orig[c].k], tts(wrd.i));
             // SUBTRACT 25 FROM ORIG[C].X ABOVE IN ORDER TO EXTEND HIT BOX IN INCLUDE AUDIO BUTTON
-            //y = wrd.d ? -1 : w[orig[c].k].f;  // my fix
-            //y = w[orig[c].k].f    // original code
+            // (y = w[orig[c].k].d ? -1 : w[orig[c].k].f)  // my fix
+            // y = w[L[c].k].f    // original code
         }
         // wrd.d tells you whether a word has been found yet
         //tts(wrd.i); // THIS CAUSES WORD TO BE SPOKEN WHEN CLICKED ON IN THE WORD BANK ----------------------------------
@@ -612,7 +613,7 @@ function xa(a) {
 
 // Called by qa(); seems to be called when word is found
 function wa(a) {
-    console.log("wa");
+    //console.log("wa");
     var c = y,
         b;
     a: if (c == a) b = "";
@@ -652,7 +653,7 @@ function wa(a) {
         if (b = xa(b), -1 < b) {
             za("success");
             tts(w[b].g);
-            console.log(w[b]);
+            //console.log(w[b]);
             sa(b, c, a);
             w[b].d = i;
             // f = starting index of the word
@@ -660,7 +661,7 @@ function wa(a) {
 
             // h = ending index of the word
             w[b].h = a;
-            console.log(w[b]);
+            //console.log(w[b]);
             ta();
             a: {
                 for (a = 0; a < w.length; a++)
@@ -831,7 +832,7 @@ function Aa() {
 }
 
 function za(a) {
-    R.audio && ("success" == a && ja.play(), "fail" == a && ka.play(), "finished" == a && la.play())
+    //R.audio && ("success" == a && ja.play(), "fail" == a && ka.play(), "finished" == a && la.play())
 }
 
 // Play again
