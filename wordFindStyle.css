@@ -1,0 +1,40 @@
+body{
+	background-color: rgb(223, 251,251);
+	font-size: 100%;
+}
+.headingBox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	background-color: rgb(34, 102, 102);
+}
+.heading{
+	position: relative;
+	font-family: "Bookman Header", "Comic Sans MS Header", "Courier Header";
+	font-size: 3em;
+	color: rgb(141, 182, 182);
+	line-height: 0;
+	padding-left: 25px;
+	margin-top: 40px;
+}
+#playGame{
+	position: absolute;
+	margin-left: 42.1%;
+	margin-top: 23%;
+}
+#createListButton{
+	position: absolute;
+	margin-left: 42.7%;
+	margin-top: 25%;
+	background-color: rgb(90, 149, 149);
+	color: rgb(209, 239, 239);
+	padding: 1%;
+	border: double;
+}
+.helpButton {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+}

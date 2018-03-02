@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+		<link rel="stylesheet" href="wordFindStyle.css">
         <meta charset="UTF-8">
         <title>Home</title>
         <script type="text/javascript" src="js/localStorage.js"></script>
@@ -16,20 +17,27 @@
                 window.location.href = "example.html?" + ls;
             }
             function help(){
-            window.location.href = "idexHelp.html";
-        }
+				window.location.href = "idexHelp.html";
+			}
+			function createNewList(){
+				window.location.href = "fileUpload.html";
+			}
         </script>
     </head>
     <body onload="fetchLists()"> <!-- fetchLists() updates the drop down list select element -->
-        <h3>Word Find</h3>
-        <select id="dropdownList">
-            <option value="Empty.">Select a word list.</option>
-        </select>
-        <button onclick = "playGame()">Play</button>
+        <div class = "headingBox">
+			<h3 class = "heading">Word Find</h3>
+        </div>
+		<div id = "playGame">
+			<select id="dropdownList">
+				<option value="Empty.">Select a word list.</option>
+			</select>
+			<button onclick = "playGame()">Play</button>
+		</div>
     <!-- TODO: pass in puzzle selected to playGame() -->
         <br>
-        <a href="fileUpload.html">Create New Word List</a>
+        <button id = "createListButton" onclick = "createNewList()">Create New Word List</a>
     <br>
-    <button onclick = "help()">Help</button>
+    <button class = "helpButton" onclick = "help()">Help</button>
     </body>
 </html>
