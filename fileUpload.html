@@ -129,20 +129,19 @@
     <button class = "customListTab" style = "background-color: rgb(141, 182, 182)" onclick = "makeCustomList()">Create Custom List</button>
 	<div class = "tabHider"></div>
     
-    <br>
-    <h4>Create New Word List: Upload File</h4>
-    <form>
-        List Display Name:  <input type = "text" id = "displayN" value = "">
-        <br>
-        <br>
-        File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
-    </form>
-    <!-- BUTTONS -->
-    <p>Add File</p> <!-- TODO: multiple file uploads -->
-    <button onclick = "upload()">UPLOAD</button>
-    <br>
-    <button class = "homeButton" onclick = "back()">Home</button>
-    <br>
-    <button class = "helpButton" onclick = "help()">Help</button>
+    <div class = "screenBody">
+		<h4 class = "pageTitle">Create New Word List: Upload File</h4>
+		<form class = "inputForm">
+			List Display Name:  <input type = "text" id = "displayN" value = "">
+			<br>
+			<br>
+			File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
+		</form>
+		<!-- BUTTONS -->
+		<!-- TODO: multiple file uploads -->
+	</div>
+	<button class = "puzzleSaveButton" onclick = "upload()">UPLOAD</button>
+	<button class = "homeButton" onclick = "back()">Home</button>
+	<button class = "helpButton" onclick = "help()">Help</button>
 </body>
 </html>

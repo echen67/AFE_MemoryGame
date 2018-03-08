@@ -32,20 +32,18 @@
         <button class = "customListTab" style = "background-color: rgb(223, 251,251)">Create Custom List</button>
 		<div class = "tabHider"></div>
 		
-		<h4>Create New Word List: Custom List</h4>
-        <form>
-            List Display Name:  <input type = "text" id = "list_name" value = "">
-            <br>
-            <br>
-            <!--<h1 id="list_name" contenteditable="true">Enter List Name</h1>-->
-            <ol id="list_items" contenteditable="true">
-                <li>Enter words</li>
-            </ol>
-        </form>
-        <button onclick = "createCustomArray()">Save Puzzle</button><button onclick="clearLists()">DEBUG: CLEAR</button>
-        <br>
-        <button class = "homeButton" onclick = "back()">Home</button>
-        <br>
-        <button class = "helpButton" onclick = "help()">Help</button>
+		<div class = "screenBody">
+			<h4 class = "pageTitle">Create New Word List: Custom List</h4>
+			<form class = "inputForm">
+				List Display Name:  <input type = "text" id = "list_name" value = "">
+				<!--<h1 id="list_name" contenteditable="true">Enter List Name</h1>-->
+				<ol id="list_items" contenteditable="true">
+					<li>Enter words</li>
+				</ol>
+			</form>
+		</div>
+		<button class = "puzzleSaveButton" onclick = "createCustomArray()">Save Puzzle</button>
+		<button class = "homeButton" onclick = "back()">Home</button>
+		<button class = "helpButton" onclick = "help()">Help</button>
     </body>
 </html>
