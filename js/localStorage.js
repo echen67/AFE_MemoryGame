@@ -1,5 +1,5 @@
 function createCustomArray() {
-    var listName = document.getElementById("list_name").textContent; // retrieves list name from HTML
+    var listName = document.getElementById('list_name').value; // retrieves list name from HTML
     // check if list name is not empty
     if (listName == "") {
         alert("Failed list creation.\n\nPlease enter valid list name.");
