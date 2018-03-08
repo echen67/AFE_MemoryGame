@@ -56,7 +56,8 @@
                   //NEW NICOLE
                   var tostore_pre = text.replace( /\n/g, " " ); //replace all newlines with spaces
                   var tostore = tostore_pre.split(" "); //store each word as entry in new array
-                  //console.log(tostore);
+                  console.log("original array");
+                  console.log(tostore);
 
 
                   //error checking for special characters
@@ -71,6 +72,8 @@
                   }
 
                   array_to_store = tostore; //set global var
+                  console.log("Array_to_store");
+                  console.log(array_to_store);
                   //END NEW NICOLE
                 };
                 reader.readAsText(input.files[0]);
@@ -82,18 +85,19 @@
 
         // ---------------------------------------- BUTTON NAVIGATION
         function upload(){
-            //NEW NICOLE
+           //NEW NICOLE
             name_to_store = document.getElementById('displayN').value; //take file name from "List Display Name" textbox
-            //localStorage.setItem(name_to_store, array_to_store); //use global vars to save in loc storage REMOVE AFTER SPRINT 2
-            //END NEW NICOLE
-            //window.location.href = "home.html";
-
-            if (array_to_store.length > 0) { //error checking for empty list
-                // Kim implement local storage javascript call
-                storeList(array_to_store, name_to_store);
+            if (array_to_store.length > 1) { //error checking for empty list
+                localStorage.setItem(name_to_store, array_to_store); //use global vars to save in loc storage
+                console.log("accessing local storage...");
+                //console.log(localStorage.getItem(name_to_store)[0]);
+                console.log(localStorage.getItem(name_to_store));
+                alert("list creation success");
             } else {
                 alert("The selected list is empty! No puzzle can be created.");
             }
+            //END NEW NICOLE
+            //window.location.href = "home.html";
 
             /** TODO:   - accepting spaces between words (currently parsing file reader using spaces)
                         - removing empty/null element at the end of the array_to_store (EX. someone has a bunch of empty lines at the end of their list or inbetween words)
@@ -115,8 +119,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <h3>Word Find</h3>
+<h3>Word Find</h3>
     <button onclick = "makeCustomList()">Make Custom List</button>
     <br>
     <h4>Create New Word List: Upload File</h4>
@@ -124,35 +127,14 @@
         List Display Name:  <input type = "text" id = "displayN" value = "">
         <br>
         <br>
-
-        <!-- Prompts user to add file. Upon slelecting file, openFile(event) is fired -->
         File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
     </form>
     <!-- BUTTONS -->
     <p>Add File</p> <!-- TODO: multiple file uploads -->
     <button onclick = "upload()">UPLOAD</button>
-=======
-<h3>Word Find</h3>
-<button onclick = "makeCustomList()">Make Custom List</button>
-<br>
-<h4>Create New Word List: Upload File</h4>
-<p>Upload a text file (.txt) with one word per line. Enter in list name.</p>
-<form>
-    List Display Name:  <input type = "text" id = "displayN" value = "">
->>>>>>> origin/master
     <br>
+    <button onclick = "back()">Back</button>
     <br>
-    File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
-</form>
-<!-- BUTTONS -->
-<p>Add File</p> <!-- TODO: multiple file uploads -->
-<button onclick = "upload()">UPLOAD</button><button onclick="clearLists()">DEBUG: CLEAR</button>
-<br>
-<button onclick = "back()">Back</button>
-<br>
-<button onclick = "help()">Help</button>
-<!--<div id='output'>
-    ...
-</div>-->
+    <button onclick = "help()">Help</button>
 </body>
 </html>
