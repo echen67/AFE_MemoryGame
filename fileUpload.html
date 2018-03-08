@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" href="wordFindStyle.css">
     <meta charset="UTF-8">
     <title>File Upload</title>
     <script type="text/javascript" src="js/localStorage.js"></script>
@@ -119,8 +120,15 @@
 </head>
 
 <body>
-<h3>Word Find</h3>
-    <button onclick = "makeCustomList()">Make Custom List</button>
+	<div class = "headingBox">
+			<h3 class = "heading">Word Find</h3>
+    </div>
+   
+	<!-- Tabs on the right left -->
+    <button class = "fileUploadTab" style = "background-color: rgb(223, 251,251)">File Upload</button>
+    <button class = "customListTab" style = "background-color: rgb(141, 182, 182)" onclick = "makeCustomList()">Create Custom List</button>
+	<div class = "tabHider"></div>
+    
     <br>
     <h4>Create New Word List: Upload File</h4>
     <form>
@@ -133,8 +141,8 @@
     <p>Add File</p> <!-- TODO: multiple file uploads -->
     <button onclick = "upload()">UPLOAD</button>
     <br>
-    <button onclick = "back()">Back</button>
+    <button class = "homeButton" onclick = "back()">Home</button>
     <br>
-    <button onclick = "help()">Help</button>
+    <button class = "helpButton" onclick = "help()">Help</button>
 </body>
 </html>

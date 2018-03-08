@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+		<link rel="stylesheet" href="wordFindStyle.css">
         <meta charset="UTF-8">
         <title>Make Custom List</title>
         <script type="text/javascript" src="js/localStorage.js" ></script>
@@ -22,9 +23,16 @@
         </script>
     </head>
     <body>
-        <h3>Word Find</h3>
-        <button onclick = "fileUpload()">File Upload</button>
-        <h4>Create New Word List: Custom List</h4>
+        <div class = "headingBox">
+			<h3 class = "heading">Word Find</h3>
+        </div>
+		
+		<!-- Tabs on the right left -->
+        <button class = "fileUploadTab" style = "background-color: rgb(141, 182, 182)" onclick = "fileUpload()">File Upload</button>
+        <button class = "customListTab" style = "background-color: rgb(223, 251,251)">Create Custom List</button>
+		<div class = "tabHider"></div>
+		
+		<h4>Create New Word List: Custom List</h4>
         <form>
             <h1 id="list_name" contenteditable="true">Enter List Name</h1>
             <ol id="list_items" contenteditable="true">
@@ -33,8 +41,8 @@
         </form>
         <button onclick = "createCustomArray()">Save Puzzle</button><button onclick="clearLists()">DEBUG: CLEAR</button>
         <br>
-        <button onclick = "back()">Back</button>
+        <button class = "homeButton" onclick = "back()">Home</button>
         <br>
-        <button onclick = "help()">Help</button>
+        <button class = "helpButton" onclick = "help()">Help</button>
     </body>
 </html>
