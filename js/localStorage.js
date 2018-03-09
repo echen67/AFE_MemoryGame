@@ -1,4 +1,4 @@
-function createCustomArray() {
+3function createCustomArray() {
     var listName = document.getElementById('list_name').value; // retrieves list name from HTML
     // check if list name is not empty
     if (listName == "") {
@@ -30,7 +30,13 @@ function createCustomArray() {
     storeList(array, listName);
 }
 
-// JQuery for no-number text input - TODO
+// Alphabet only text input
+function alphaOnly(event) {
+  var key = event.keyCode;
+  // 65 - 90 is alphabet | 8 is backspace | 13 is enter | 46 is delete
+  return ((key >= 65 && key <= 90) || key == 8 || key == 13 || key == 46);
+  // TODO - prevent enter from registering if line is empty
+};
 
 // Check for profanity - TODO
 
