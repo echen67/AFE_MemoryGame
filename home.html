@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		<link rel="stylesheet" href="wordFindStyle.css">
+		<link rel="stylesheet" href="css/wordFindStyle.css">
         <meta charset="UTF-8">
         <title>Home</title>
         <script type="text/javascript" src="js/localStorage.js"></script>
@@ -17,7 +17,7 @@
                 window.location.href = "example.html?" + ls;
             }
             function help(){
-				window.location.href = "idexHelp.html";
+				window.location.href = "homeHelp.html";
 			}
 			function createNewList(){
 				window.location.href = "fileUpload.html";
@@ -36,7 +36,7 @@
 		</div>
     <!-- TODO: pass in puzzle selected to playGame() -->
         <br>
-        <button id = "createListButton" onclick = "createNewList()">Create New Word List</a>
+        <button id = "createListButton" onclick = "createNewList()">Create New Word List</button>
     <br>
     <button class = "helpButton" onclick = "help()">Help</button>
     </body>

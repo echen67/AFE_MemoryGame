@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="wordFindStyle.css">
+	<link rel="stylesheet" href="css/wordFindStyle.css">
     <meta charset="UTF-8">
     <title>File Upload</title>
     <script type="text/javascript" src="js/localStorage.js"></script>
@@ -86,7 +86,6 @@
 
         // ---------------------------------------- BUTTON NAVIGATION
         function upload(){
-           //NEW NICOLE
             name_to_store = document.getElementById('displayN').value; //take file name from "List Display Name" textbox
             if (array_to_store.length > 1) { //error checking for empty list
                 localStorage.setItem(name_to_store, array_to_store); //use global vars to save in loc storage
@@ -97,15 +96,7 @@
             } else {
                 alert("The selected list is empty! No puzzle can be created.");
             }
-            //END NEW NICOLE
             //window.location.href = "home.html";
-
-            /** TODO:   - accepting spaces between words (currently parsing file reader using spaces)
-                        - removing empty/null element at the end of the array_to_store (EX. someone has a bunch of empty lines at the end of their list or inbetween words)
-                        - special character/number removal (with alert pop up) - DONE
-                        - failed upload if text file is empty - DONE
-                        - elements being stored with "/r" in the array (why is this happening?)
-            **/
         }
         function back(){
             window.location.href = "home.html";
@@ -114,7 +105,7 @@
             window.location.href = "uploadHelp.html";
         }
         function makeCustomList(){
-            window.location.href = "addWord.html";
+            window.location.href = "customList.html";
         }
     </script>
 </head>
