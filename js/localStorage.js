@@ -130,3 +130,22 @@ function readSingleFile(evt) {
         alert('The File APIs are not fully supported by your browser.');
     }
 }
+
+function addTable() {
+    var table = document.getElementById('availLists')
+    table.border = '1'
+
+    var arr = new Array();
+    // Fetch the content in the local storage
+    for(var i = 0; i < localStorage.length; i++){
+        arr.push(localStorage.key(i)); // stores local storage keys in an array
+    }
+
+    for (i = 0; i < arr.length; i++) {
+        var tr = document.createElement('TR');
+        var td = tr.insertCell();
+        td.textContent = String(arr[i]);
+        tr.appendChild(td);
+        table.appendChild(tr);
+    }
+}

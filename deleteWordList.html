@@ -33,10 +33,16 @@
 
         </script>
     </head>
-    <body onload="fetchLists()"> <!-- fetchLists() updates the drop down list select element -->
+    <body onload="fetchLists(); addTable()"> <!-- fetchLists() updates the drop down list select element -->
         <div class = "headingBox">
 			<h3 class = "heading">Word Find</h3>
+        </div>   
+
+        <div id = "listTable" style = "position:absolute;left:100px;top:80px">
+            <table id = "availLists">
+            </table>
         </div>
+
 		<div id = "playGame">
 			<select id="dropdownList">
 				<option value="Empty.">Select a word list.</option>
