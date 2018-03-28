@@ -110,3 +110,24 @@ body{
 	bottom: 20px;
 	margin-left: 50%;
 }
+
+.helpBody{
+	position: relative;
+	width: 70%;
+	padding: 45px;
+	margin: 45px;
+	margin-left: 10%;
+	margin-right: 10%;
+	word-break: break-all;
+    white-space: normal;
+}
+
+.helpPageTitle{
+	position: absolute;
+	margin-left: 45%;
+	margin-bottom: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	font-family: "Bookman Header", "Comic Sans MS Header", "Courier Header";
+	font-size: 2em;
+}
