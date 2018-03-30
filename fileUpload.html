@@ -88,7 +88,11 @@
         function upload(){
             name_to_store = document.getElementById('displayN').value; //take file name from "List Display Name" textbox
             if (array_to_store.length > 1) { //error checking for empty list
-                localStorage.setItem(name_to_store, array_to_store); //use global vars to save in loc storage
+                //localStorage.setItem(name_to_store, array_to_store); //use global vars to save in loc storage
+                for (i = 0; i < array_to_store.length; i++) {
+                	array_to_store[i] = array_to_store[i].trim();
+                }
+                storeList(array_to_store, name_to_store);
                 console.log("accessing local storage...");
                 //console.log(localStorage.getItem(name_to_store)[0]);
                 console.log(localStorage.getItem(name_to_store));
