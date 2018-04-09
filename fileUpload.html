@@ -119,8 +119,10 @@
 
         function confirmLeave(href){
 
+            var file = document.getElementById("uploadFile").value;
             var text = document.getElementById("displayN").value;
-            if(text == ""){
+
+            if(text == "" && file == ""){
                 window.location.href = href;
             }else{
                 var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
