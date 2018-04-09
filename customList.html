@@ -20,6 +20,22 @@
             function fileUpload(){
                 window.location.href = "fileUpload.html";
             }
+
+            function confirmLeave(href){
+                // var file = document.getElementById("list_name").value;
+                // var text = document.getElementById("list_items").value;
+                // console.log(text)
+                // if(text == "" && file == ""){
+                //     window.location.href = href;
+                // }else{
+                    var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
+                    if (conf){
+                        window.location.href = href;
+                    }else{
+                        // Do nothing
+                    }
+                // }
+                }
         </script>
     </head>
     <body>
@@ -28,7 +44,7 @@
         </div>
 		
 		<!-- Tabs on the right left -->
-        <button class = "fileUploadTab" style = "background-color: rgb(141, 182, 182)" onclick = "fileUpload()">File Upload</button>
+        <button class = "fileUploadTab" style = "background-color: rgb(141, 182, 182)" onclick = "confirmLeave('fileUpload.html')">File Upload</button>
         <button class = "customListTab" style = "background-color: rgb(223, 251,251)">Create Custom List</button>
 		<div class = "tabHider"></div>
 		
@@ -42,7 +58,7 @@
 			</form>
 		</div>
 		<button class = "puzzleSaveButton" onclick = "createCustomArray()">Save Puzzle</button>
-		<button class = "homeButton" onclick = "back()">Home</button>
-		<button class = "helpButton" onclick = "help()">Help</button>
+		<button class = "homeButton" onclick = "confirmLeave('home.html')">Home</button>
+		<button class = "helpButton" onclick = "confirmLeave('customListHelp.html')">Help</button>
     </body>
 </html>

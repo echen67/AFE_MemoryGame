@@ -116,6 +116,23 @@
             xmlHttp.send(null);
             
         }
+
+        function confirmLeave(href){
+
+            var file = document.getElementById("uploadFile").value;
+            var text = document.getElementById("displayN").value;
+
+            if(text == "" && file == ""){
+                window.location.href = href;
+            }else{
+                var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
+                if (conf){
+                    window.location.href = href;
+                }else{
+                    // Do nothing
+                }
+            }
+        }
         
         var openFile = function(event) {
             // ERROR Prevention: Check for the various File API support.
@@ -219,15 +236,15 @@
             //window.location.href = "home.html";
         }
         
-        function back(){
-            window.location.href = "home.html";
-        }
-        function help(){
-            window.location.href = "uploadHelp.html";
-        }
-        function makeCustomList(){
-            window.location.href = "customList.html";
-        }
+        // function back(){
+        //     window.location.href = "home.html";
+        // }
+        // function help(){
+        //     window.location.href = "uploadHelp.html";
+        // }
+        // function makeCustomList(){
+        //     window.location.href = "customList.html";
+        // }
     </script>
 </head>
 
@@ -238,7 +255,7 @@
    
 	<!-- Tabs on the right left -->
     <button class = "fileUploadTab" style = "background-color: rgb(223, 251,251)">File Upload</button>
-    <button class = "customListTab" style = "background-color: rgb(141, 182, 182)" onclick = "makeCustomList()">Create Custom List</button>
+    <button class = "customListTab" style = "background-color: rgb(141, 182, 182)" onclick = "confirmLeave('customList.html')">Create Custom List</button>
 	<div class = "tabHider"></div>
     
     <div class = "screenBody">
@@ -253,7 +270,7 @@
 		<!-- TODO: multiple file uploads -->
 	</div>
 	<button class = "puzzleSaveButton" onclick = "upload()">UPLOAD</button>
-	<button class = "homeButton" onclick = "back()">Home</button>
-	<button class = "helpButton" onclick = "help()">Help</button>
+	<button class = "homeButton" onclick = "confirmLeave('home.html')">Home</button>
+	<button class = "helpButton" onclick = "confirmLeave('uploadHelp.html')">Help</button>
 </body>
 </html>
