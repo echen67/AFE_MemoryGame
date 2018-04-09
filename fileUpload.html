@@ -118,11 +118,17 @@
         }
 
         function confirmLeave(href){
-            var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
-            if (conf){
+
+            var text = document.getElementById("displayN").value;
+            if(text == ""){
                 window.location.href = href;
             }else{
-                // Do nothing
+                var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
+                if (conf){
+                    window.location.href = href;
+                }else{
+                    // Do nothing
+                }
             }
         }
         
@@ -228,15 +234,15 @@
             //window.location.href = "home.html";
         }
         
-        function back(){
-            window.location.href = "home.html";
-        }
-        function help(){
-            window.location.href = "uploadHelp.html";
-        }
-        function makeCustomList(){
-            window.location.href = "customList.html";
-        }
+        // function back(){
+        //     window.location.href = "home.html";
+        // }
+        // function help(){
+        //     window.location.href = "uploadHelp.html";
+        // }
+        // function makeCustomList(){
+        //     window.location.href = "customList.html";
+        // }
     </script>
 </head>
 
