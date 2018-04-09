@@ -21,11 +21,11 @@
 
 <div id="page">
     <header>
-        <a href="https://thewordsearch.com" title="The Word Search"><img src="/img/logo.png" id="logo" alt="The Word Search"></a>
+        <a href="https://thewordsearch.com" onclick = "confirmLeave(href)" title="The Word Search"><img src="/img/logo.png" id="logo" alt="The Word Search"></a>
         <nav>
-            <a class="iMake" href="/maker/">Word Search Maker</a>
-            <a class="iHome" href="/">More Puzzles</a>
-            <a class="iSearch" href="/search/">Search</a>
+            <a class="iMake" href="/maker/" onclick = "confirmLeave(href)">Word Search Maker</a>
+            <a class="iHome" href="/" onclick = "confirmLeave(href)">More Puzzles</a>
+            <a class="iSearch" href="/search/" onclick = "confirmLeave(href)">Search</a>
         </nav>
     </header>
 
@@ -45,15 +45,20 @@
         </div>
     </div>
 
-    <button onclick = "back()">Back</button>
+    <button onclick = "confirmLeave('home.html')">Back</button>
 
 
 
 <div id="settings" class="jqmWindow"></div>
 
 <script>
-function back(){
-    window.location.href = "home.html";
+function confirmLeave(href){
+    var conf= confirm("Do you really want to leave this page? All game process will be lost");
+    if (conf){
+        window.location.href = href;
+    }else{
+        // Do nothing
+    }
 }
 </script>
 
