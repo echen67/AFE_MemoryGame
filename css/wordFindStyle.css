@@ -193,3 +193,109 @@ tr:nth-child(odd) td { background: #FEFEFE; }
 
 tr td:hover { background: #666; color: #FFF; }
 /* Hover cell effect! */
+
+/* For game screen */
+#page{
+    width:100%;
+    max-width:1280px;
+    margin:20px auto 20px auto;
+}
+
+section{
+    clear:both;padding-top:20px;
+}
+
+#puzzle{
+    padding:10px 0 10px 40px;
+    font-size:1em;
+    color:#555
+}
+
+#puzzle hr{
+    margin:50px 0 0 0;
+}
+
+#puzzle .blkA,#puzzle .blkB{
+    color:#555;
+    width:600px;
+    font-size:1.1em;
+    font-weight:bold;
+    margin:8px 0;
+    text-shadow:0 .5px .5px #FFF;
+}
+
+#puzzle .blkB{
+    width:220px;
+    font-size:1em;
+}
+
+.download-image{
+    border:1px solid #222
+}
+
+.pLeft,.pRight{
+    display:inline-block;
+    vertical-align:top;
+    width:840px;
+    position:relative;
+}
+
+.related li,.imgList li{
+    display:inline-block;
+    width:306px;
+    border:1px solid #935109;
+    position:relative;
+    margin:6px;
+}
+
+.imgList li img{
+    width:300px;
+    height:278px;
+}
+
+.printBtn{
+    display:inline-block;
+    padding:4px 12px;
+    border:1px solid #935109;
+    border-bottom:0;
+    position:absolute;
+    left:76px;
+    bottom:0;
+    background:#ccc}
+
+.related{
+    margin:40px 0;
+    padding:12px;
+    background:#cad4a9;
+}
+
+.related li{
+    width:200px;
+}
+
+.related li img{
+    width:200px;
+    height:185px;
+}
+
+#cmts{
+    padding:40px 0;
+}
+
+.jqmWindow{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    width:800px;
+    height:560px;
+    margin-left:-400px;
+    margin-top:-250px;
+    background-color:#faffe4;
+    padding:12px;
+    border:8px solid #444
+}
+
+.jqmWindow h1{
+    margin-top:0
+}

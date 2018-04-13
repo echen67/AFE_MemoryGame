@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/wordFindStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Farm Animals Word Search</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="../AFE_MemoryGame/css/main.css" media="all">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
+<!--<link rel="stylesheet" type="text/css" href="../AFE_MemoryGame/css/main.css" media="all">--!>
 <!-- <link href='//fonts.googleapis.com/css?family=Lato:900italic' rel='stylesheet' type='text/css'> -->
-<script src="../AFE_MemoryGame/js/full2.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="../AFE_MemoryGame/js/full2.js"></script>
 <script type="text/javascript" src="js/localStorage.js"></script>
 <link rel="canonical" href="https://thewordsearch.com/puzzle/7/farm-animals/">
 <meta property="og:image" content="https://thewordsearch.com/static/promo/7.png"><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
@@ -18,17 +18,13 @@
     <img id="audioGraphic" src="../AFE_MemoryGame/audio.png" width="0" height="0">
 </head>
 <body>
-
+<div class = "headingBox">
+    <a href="home.html">
+        <img class = "logo" src="WordSearchLogo.png" alt="Logo">
+    </a>
+    <h3 class = "heading">Word Find</h3>
+</div>
 <div id="page">
-    <header>
-        <a href="https://thewordsearch.com" onclick = "confirmLeave(href)" title="The Word Search"><img src="/img/logo.png" id="logo" alt="The Word Search"></a>
-        <nav>
-            <a class="iMake" href="/maker/" onclick = "confirmLeave(href)">Word Search Maker</a>
-            <a class="iHome" href="/" onclick = "confirmLeave(href)">More Puzzles</a>
-            <a class="iSearch" href="/search/" onclick = "confirmLeave(href)">Search</a>
-        </nav>
-    </header>
-
     <section>
         <div id="puzzle">
     <div class="pLeft">
@@ -79,8 +75,6 @@ $(document).ready(function() {
     addShares();
 });
 </script>    </section>
-
-    <div id="copyright">&copy; TheWordSearch.com</div>
 </footer></div>
 </body>
 </html>
