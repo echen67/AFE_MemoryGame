@@ -142,16 +142,30 @@ function addTable() {
     }
     // TODO: Alter storage for word count and dates
 
+    //new
+    var temparr = new Array();
+    //end
+
     for (i = 0; i < arr.length; i++) {
         var tr = document.createElement('TR');
         var listName = tr.insertCell();
         listName.textContent = String(arr[i]);
         tr.appendChild(listName);
         var listWords = tr.insertCell();
-        listWords.textContent = String(0);
+        //new - reformat string from local storage to get # of words
+        temparr = localStorage.getItem(arr[i]);
+        temparr = temparr.replace( /,/g, " " );
+        temparr = temparr.replace( /"/g, "" );
+        temparr = temparr.slice(1,(temparr.length-1));
+        temparr = temparr.split(" ");
+        listWords.textContent = String(temparr.length);
+        //end
         tr.appendChild(listWords);
         var listDate = tr.insertCell();
-        listDate.textContent = String("Month/Day/Year");
+        //listDate.textContent = String("Month/Day/Year");
+        //new - pull date
+
+        //end
         tr.appendChild(listDate);
         table.appendChild(tr);
     }
