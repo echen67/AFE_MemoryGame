@@ -18,8 +18,16 @@ body{
 	font-size: 3em;
 	color: rgb(141, 182, 182);
 	line-height: 0;
-	padding-left: 25px;
+	padding-left: 80px;
 	margin-top: 40px;
+}
+
+.logo{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	padding-left: 15px;
+	padding-top: 10px;
 }
 
 #playGame{
@@ -52,7 +60,7 @@ body{
 
 .fileUploadTab{
 	position: absolute;
-	right: 165px;
+	right: 270px;
 	top: 38px;
 	border: none;
 	padding: 10px;
@@ -61,6 +69,16 @@ body{
 }
 
 .customListTab{
+	position: absolute;
+	right: 125px;
+	top: 38px;
+	border: none;
+	padding: 10px;
+	padding-bottom: 15px;
+	border-radius: 10px;
+}
+
+.manageListTab{
 	position: absolute;
 	right: 20px;
 	top: 38px;
@@ -75,7 +93,7 @@ body{
 	top: 70px;
 	right: 0px;
 	height: 10px;
-	width: 260px;
+	width: 370px;
 	background-color: rgb(223, 251,251);
 }
 
@@ -90,24 +108,31 @@ body{
 }
 
 .screenBody {
-	position: absolute;
+	position: relative;
 	width: 100%;
 	top: 70px;
 }
 
 .inputForm {
-	position: absolute;
+	position: relative;
 	top: 100px;
 	margin-left: 36%;
 	background-color:  rgb(141, 182, 182);
 	padding: 10px;
 	white-space: nowrap;
 	overflow: hidden;
+	width:375px;
+}
+
+.puzzleUploadButton{
+	position: absolute;
+	margin-top: 125px;
+	margin-left: 50%;
 }
 
 .puzzleSaveButton{
 	position: absolute;
-	bottom: 20px;
+	margin-top: 200px;
 	margin-left: 50%;
 }
 

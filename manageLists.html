@@ -31,6 +31,22 @@
             function help(){
 				window.location.href = "homeHelp.html";
 			}
+			
+			function confirmLeave(href){
+                // var file = document.getElementById("list_name").value;
+                // var text = document.getElementById("list_items").value;
+                // console.log(text)
+                // if(text == "" && file == ""){
+                //     window.location.href = href;
+                // }else{
+                    var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
+                    if (conf){
+                        window.location.href = href;
+                    }else{
+                        // Do nothing
+                    }
+                // }
+                }
 
        
 
@@ -38,8 +54,17 @@
     </head>
     <body onload="fetchLists(); addTable()"> <!-- fetchLists() updates the drop down list select element -->
         <div class = "headingBox">
+			<a href="home.html">
+				<img class = "logo" src="WordSearchLogo.png" alt="Logo">
+			</a>
 			<h3 class = "heading">Word Find</h3>
         </div>   
+		
+		<!-- Tabs on the right left -->
+        <button class = "fileUploadTab" style = "background-color: rgb(141, 182, 182)" onclick = "confirmLeave('fileUpload.html')">File Upload</button>
+        <button class = "customListTab" style = "background-color: rgb(141, 182, 182)" onclick = "confirmLeave('customList.html')">Create Custom List</button>
+		<button class = "manageListTab" style = "background-color: rgb(223, 251,251)">Manage List</button>
+		<div class = "tabHider"></div>
 
         <div id = "listTable">
             <table id = "availLists">
