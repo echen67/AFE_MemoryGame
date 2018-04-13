@@ -268,12 +268,13 @@
 			List Display Name:  <input type = "text" id = "displayN" value = "">
 			<br>
 			<br>
-			File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>
+			File Select:  <input type = "file" accept = 'text/plain' id = "uploadFile" onchange='openFile(event)'>		
 		</form>
+		<button class = "puzzleUploadButton" onclick = "upload()">UPLOAD</button>
 		<!-- BUTTONS -->
 		<!-- TODO: multiple file uploads -->
 	</div>
-	<button class = "puzzleSaveButton" onclick = "upload()">UPLOAD</button>
+	
 	<button class = "homeButton" onclick = "confirmLeave('home.html')">Home</button>
 	<button class = "helpButton" onclick = "confirmLeave('uploadHelp.html')">Help</button>
 </body>

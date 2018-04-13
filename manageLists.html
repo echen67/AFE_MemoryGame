@@ -31,6 +31,22 @@
             function help(){
 				window.location.href = "homeHelp.html";
 			}
+			
+			function confirmLeave(href){
+                // var file = document.getElementById("list_name").value;
+                // var text = document.getElementById("list_items").value;
+                // console.log(text)
+                // if(text == "" && file == ""){
+                //     window.location.href = href;
+                // }else{
+                    var conf= confirm("Do you really want to leave this page? All data on this page will be reset");
+                    if (conf){
+                        window.location.href = href;
+                    }else{
+                        // Do nothing
+                    }
+                // }
+                }
 
        
 
