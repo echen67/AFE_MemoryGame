@@ -27,6 +27,16 @@ function createCustomArray() {
         return; // cancels out of submission
     }
 
+    //ADD DATE TO ARRAY
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth()+1;
+    var year = today.getFullYear();
+    var date_string = (month + "/" + day + "/" + year);
+
+    array.splice(0, 0, date_string);
+    console.log(array);
+
     storeList(array, listName);
 }
 
@@ -158,13 +168,12 @@ function addTable() {
         temparr = temparr.replace( /"/g, "" );
         temparr = temparr.slice(1,(temparr.length-1));
         temparr = temparr.split(" ");
-        listWords.textContent = String(temparr.length);
+        listWords.textContent = String(temparr.length-1);
         //end
         tr.appendChild(listWords);
         var listDate = tr.insertCell();
-        //listDate.textContent = String("Month/Day/Year");
         //new - pull date
-
+        listDate.textContent = String(temparr[0]);
         //end
         tr.appendChild(listDate);
         table.appendChild(tr);
