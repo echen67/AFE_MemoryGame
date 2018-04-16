@@ -7,6 +7,21 @@ function createCustomArray() {
     }
 
     var array = new Array();
+    var inputElements = document.getElementsByTagName('input'); // grabs the words from the inputs
+    for (var i = 1; i < inputElements.length; i++) { // skip first element because input is the title
+        if (inputElements[i].value != '') {
+            array.push(inputElements[i].value);
+        }
+    }
+
+    // check if contents are populated
+    if (array.length == 0) {
+        alert("Failed list creation.\n\nNo list contents entered. Please enter valid contents.");
+        return; // cancels out of submission
+    }
+
+    storeList(array, listName);
+}
 
     /* var wordList = document.getElementById('list_items');
     var listElements = wordList.getElementsByTagName('li'); // grabs the words from the list
@@ -22,15 +37,6 @@ function createCustomArray() {
             array.push(listElements[i].innerText) // stores words as an array
         }
     } */
-
-    // check if contents are populated
-    if (array.length == 0) {
-        alert("Failed list creation.\n\nNo list contents entered. Please enter valid contents.");
-        return; // cancels out of submission
-    }
-
-    storeList(array, listName);
-}
 
 // Alphabet only text input
 function alphaOnly(event) {

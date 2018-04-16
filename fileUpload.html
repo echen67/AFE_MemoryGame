@@ -229,22 +229,11 @@
                 console.log("accessing local storage...");
                 //console.log(localStorage.getItem(name_to_store)[0]);
                 console.log(localStorage.getItem(name_to_store));
-                alert("list creation success");
+                alert("List creation success");
             } else {
                 alert("The selected list is empty! No puzzle can be created.");
             }
-            //window.location.href = "home.html";
         }
-        
-        // function back(){
-        //     window.location.href = "home.html";
-        // }
-        // function help(){
-        //     window.location.href = "uploadHelp.html";
-        // }
-        // function makeCustomList(){
-        //     window.location.href = "customList.html";
-        // }
     </script>
 </head>
 
@@ -272,7 +261,6 @@
 		</form>
 		<button class = "puzzleUploadButton" onclick = "upload()">UPLOAD</button>
 		<!-- BUTTONS -->
-		<!-- TODO: multiple file uploads -->
 	</div>
 	
 	<button class = "homeButton" onclick = "confirmLeave('home.html')">Home</button>
