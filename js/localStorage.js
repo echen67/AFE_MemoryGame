@@ -6,7 +6,9 @@ function createCustomArray() {
         return; // cancels out of submission
     }
 
-    var wordList = document.getElementById('list_items');
+    var array = new Array();
+
+    /* var wordList = document.getElementById('list_items');
     var listElements = wordList.getElementsByTagName('li'); // grabs the words from the list
     var array = new Array();
     if (listElements.length == 0) {
@@ -19,7 +21,7 @@ function createCustomArray() {
         if (word != "" && word != "\n") { // checks so no empty lines are stored
             array.push(listElements[i].innerText) // stores words as an array
         }
-    }
+    } */
 
     // check if contents are populated
     if (array.length == 0) {
@@ -33,12 +35,9 @@ function createCustomArray() {
 // Alphabet only text input
 function alphaOnly(event) {
   var key = event.keyCode;
-  // 65 - 90 is alphabet | 8 is backspace | 13 is enter | 46 is delete
-  return ((key >= 65 && key <= 90) || key == 8 || key == 13 || key == 46);
-  // TODO - prevent enter from registering if line is empty
+  // 65 - 90 is alphabet | 8 is backspace | 13 is enter | 46 is delete | 9 is tab
+  return ((key >= 65 && key <= 90) || key == 8 || key == 9 || key == 46);
 };
-
-// Check for profanity - TODO
 
 function storeList(array, listName) {
     // localStorage.clear(); // DEBUG
@@ -56,6 +55,7 @@ function storeList(array, listName) {
                 // OK Confirmation
                 localStorage[listName] = myJSON;
                 alert("List successfully saved!");
+                location.reload();
             } else {
                 // Cancel Confirmation
                 alert("List not stored.");
@@ -67,6 +67,7 @@ function storeList(array, listName) {
     if (!override) {
         localStorage[listName] = myJSON;
         alert("List successfully saved!");
+        location.reload();
     }
 }
 
