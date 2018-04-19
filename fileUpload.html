@@ -193,6 +193,16 @@
                   console.log("original array");
                   console.log(tostore);
 
+                  //ADD DATE TO ARRAY
+                  var today = new Date();
+                  var day = today.getDate();
+                  var month = today.getMonth()+1;
+                  var year = today.getFullYear();
+                  var date_string = (month + "/" + day + "/" + year);
+
+                  tostore.splice(0, 0, date_string);
+                  console.log(tostore);
+
 
                   //error checking for special characters
                   var curr_word;
@@ -229,28 +239,17 @@
                 console.log("accessing local storage...");
                 //console.log(localStorage.getItem(name_to_store)[0]);
                 console.log(localStorage.getItem(name_to_store));
-                alert("list creation success");
+                alert("List creation success");
             } else {
                 alert("The selected list is empty! No puzzle can be created.");
             }
-            //window.location.href = "home.html";
         }
-        
-        // function back(){
-        //     window.location.href = "home.html";
-        // }
-        // function help(){
-        //     window.location.href = "uploadHelp.html";
-        // }
-        // function makeCustomList(){
-        //     window.location.href = "customList.html";
-        // }
     </script>
 </head>
 
 <body>
 	<div class = "headingBox">
-		<a href="home.html">
+		<a href="home.html" onclick = "confirmLeave('home.html')">
 				<img class = "logo" src="WordSearchLogo.png" alt="Logo">
 		</a>
 		<h3 class = "heading">Word Find</h3>
@@ -272,7 +271,6 @@
 		</form>
 		<button class = "puzzleUploadButton" onclick = "upload()">UPLOAD</button>
 		<!-- BUTTONS -->
-		<!-- TODO: multiple file uploads -->
 	</div>
 	
 	<button class = "homeButton" onclick = "confirmLeave('home.html')">Home</button>

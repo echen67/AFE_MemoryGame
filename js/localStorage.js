@@ -6,7 +6,34 @@ function createCustomArray() {
         return; // cancels out of submission
     }
 
-    var wordList = document.getElementById('list_items');
+    var array = new Array();
+    var inputElements = document.getElementsByTagName('input'); // grabs the words from the inputs
+    for (var i = 1; i < inputElements.length; i++) { // skip first element because input is the title
+        if (inputElements[i].value != '') {
+            array.push(inputElements[i].value);
+        }
+    }
+
+    // check if contents are populated
+    if (array.length == 0) {
+        alert("Failed list creation.\n\nNo list contents entered. Please enter valid contents.");
+        return; // cancels out of submission
+    }
+
+    //ADD DATE TO ARRAY
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth()+1;
+    var year = today.getFullYear();
+    var date_string = (month + "/" + day + "/" + year);
+
+    array.splice(0, 0, date_string);
+    console.log(array);
+
+    storeList(array, listName);
+}
+
+    /* var wordList = document.getElementById('list_items');
     var listElements = wordList.getElementsByTagName('li'); // grabs the words from the list
     var array = new Array();
     if (listElements.length == 0) {
@@ -19,26 +46,14 @@ function createCustomArray() {
         if (word != "" && word != "\n") { // checks so no empty lines are stored
             array.push(listElements[i].innerText) // stores words as an array
         }
-    }
-
-    // check if contents are populated
-    if (array.length == 0) {
-        alert("Failed list creation.\n\nNo list contents entered. Please enter valid contents.");
-        return; // cancels out of submission
-    }
-
-    storeList(array, listName);
-}
+    } */
 
 // Alphabet only text input
 function alphaOnly(event) {
   var key = event.keyCode;
-  // 65 - 90 is alphabet | 8 is backspace | 13 is enter | 46 is delete
-  return ((key >= 65 && key <= 90) || key == 8 || key == 13 || key == 46);
-  // TODO - prevent enter from registering if line is empty
+  // 65 - 90 is alphabet | 8 is backspace | 13 is enter | 46 is delete | 9 is tab
+  return ((key >= 65 && key <= 90) || key == 8 || key == 9 || key == 46);
 };
-
-// Check for profanity - TODO
 
 function storeList(array, listName) {
     // localStorage.clear(); // DEBUG
@@ -56,6 +71,7 @@ function storeList(array, listName) {
                 // OK Confirmation
                 localStorage[listName] = myJSON;
                 alert("List successfully saved!");
+                location.reload();
             } else {
                 // Cancel Confirmation
                 alert("List not stored.");
@@ -67,6 +83,7 @@ function storeList(array, listName) {
     if (!override) {
         localStorage[listName] = myJSON;
         alert("List successfully saved!");
+        location.reload();
     }
 }
 
@@ -159,13 +176,12 @@ function addTable() {
         temparr = temparr.replace( /"/g, "" );
         temparr = temparr.slice(1,(temparr.length-1));
         temparr = temparr.split(" ");
-        listWords.textContent = String(temparr.length);
+        listWords.textContent = String(temparr.length-1);
         //end
         tr.appendChild(listWords);
         var listDate = tr.insertCell();
-        //listDate.textContent = String("Month/Day/Year");
         //new - pull date
-
+        listDate.textContent = String(temparr[0]);
         //end
         tr.appendChild(listDate);
         table.appendChild(tr);
