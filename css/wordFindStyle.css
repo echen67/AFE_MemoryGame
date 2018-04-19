@@ -32,23 +32,67 @@ body{
 
 #playGame{
 	position: absolute;
-	margin-left: 42.1%;
-	margin-top: 23%;
+	left: 40%;
+	top: 41%;
+	width: 250px;
+	height: 50px;
+}
+
+#playButton{
+    position: absolute;
+    background-color: rgb(90, 149, 149);
+    color: rgb(209, 239, 239);
+    left: 39%;
+    top: 0px;
+    padding: 5% 10%;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 5px #999;
+}
+
+#playButton:hover{
+    background-color: #405577;
+    color: rgb(0,0,0);
+}
+
+#playButton:active{
+    background-color: #405577;
+    color: rgb(0,0,0);
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
 }
 
 #createListButton{
 	position: absolute;
-	margin-left: 42.7%;
-	margin-top: 25%;
+	/*margin: auto;*/
+	left: 40%;
+	top: 50%;
 	background-color: rgb(90, 149, 149);
 	color: rgb(209, 239, 239);
 	padding: 1%;
-	border: double;
+	border: none;
+	border-radius: 4px;
 	cursor: pointer;
+	font-size: 16px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	box-shadow: 0 7px #999;
 }
 
 #createListButton:hover {
+    background-color: #405577;
     color: rgb(0,0,0);
+}
+
+#createListButton:active{
+    background-color: #405577;
+    color: rgb(0,0,0);
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
 }
 
 #dropdownList{
@@ -59,6 +103,9 @@ body{
     min-width: 160px;
     padding: 12px 16px;
     z-index: 1;*/
+    position: relative;
+    padding: 10px 5px;
+    top: 17%;
 }
 
 .dropdownContent{
@@ -77,12 +124,14 @@ body{
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
+	cursor: pointer;
 }
 
 .homeButton{
 	position: absolute;
 	bottom: 20px;
 	left: 20px;
+	cursor: pointer;
 }
 
 .fileUploadTab{
@@ -92,7 +141,8 @@ body{
 	border: none;
 	padding: 10px;
 	padding-bottom: 15px;
-	border-radius: 10px;	
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 .customListTab{
@@ -103,6 +153,7 @@ body{
 	padding: 10px;
 	padding-bottom: 15px;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .manageListTab{
@@ -113,6 +164,7 @@ body{
 	padding: 10px;
 	padding-bottom: 15px;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .tabHider{
@@ -155,12 +207,56 @@ body{
 	position: absolute;
 	margin-top: 125px;
 	margin-left: 50%;
+	background-color: rgb(90, 149, 149);
+    color: rgb(209, 239, 239);
+    padding: .7%;
+    border: none;
+   	border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 3px #999;
+}
+
+.puzzleUploadButton:hover{
+    background-color: #405577;
+    color: rgb(0,0,0);
+}
+
+.puzzleUploadButton:active{
+    background-color: #405577;
+    color: rgb(0,0,0);
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
 }
 
 .puzzleSaveButton{
 	position: absolute;
-	margin-top: 200px;
-	margin-left: 50%;
+	margin-top: 177px;
+	margin-left: 47%;
+	background-color: rgb(90, 149, 149);
+    color: rgb(209, 239, 239);
+    padding: .7%;
+    border: none;
+   	border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 3px #999;
+}
+
+.puzzleSaveButton:hover{
+    background-color: #405577;
+    color: rgb(0,0,0);
+}
+
+.puzzleSaveButton:active{
+    background-color: #405577;
+    color: rgb(0,0,0);
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
 }
 
 .helpBody{
@@ -363,4 +459,38 @@ section{
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#deleteButton{
+    position: absolute;
+    top: 15%;
+    left: 19.5%;
+    background-color: rgb(90, 149, 149);
+    color: rgb(209, 239, 239);
+    padding: .7%;
+    border: none;
+   	border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-transition-duration: 0.4s;
+   	transition-duration: 0.4s;
+    box-shadow: 0 3px #999;
+}
+
+#deleteButton:hover {
+    background-color: #405577;
+    color: rgb(0,0,0);
+}
+
+#deleteButton:active{
+    background-color: #405577;
+    color: rgb(0,0,0);
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+}
+
+#deleteDiv{
+    position: absolute;
+    top: 15%;
+    left: 13%;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!--Help Image created by Gregor Cresnar from Noun Project-->
 		<link rel="stylesheet" href="css/wordFindStyle.css">
         <meta charset="UTF-8">
         <title>Home</title>
@@ -21,8 +22,6 @@
 			function createNewList(){
 				window.location.href = "fileUpload.html";
 			}
-
-            
         </script>
     </head>
     <body onload="fetchLists()"> <!-- fetchLists() updates the drop down list select element -->
@@ -37,11 +36,14 @@
 			<select id="dropdownList">
 				<option value="Empty.">Select a word list.</option>
             </select>
-			<button onclick = "playGame()">Play</button>
+			<button id="playButton" onclick = "playGame()">Play</button>
 		</div>
         <br>
-        <button id = "createListButton" onclick = "createNewList()">Create New Word List</button>
+        <button id = "createListButton" onclick="createNewList()">Create New Word List</button>
     <br>
-    <button class = "helpButton" onclick = "help()">Help</button>
+    <!--<a href="home.html" onclick="confirmLeave('home.html')"><img src="back.png" alt="Back" width="50" height="50"></a>-->
+    <!--<a href="home.html" onclick="confirmLeave('home.html')"><img src="back.png" alt="Back" width="50" height="50"></a>-->
+    <!--<button class="helpButton" onclick="help()">Help</button>-->
+    <img class="helpButton" src="help.png" alt="Help" width="50" height="50" onclick="help()">
     </body>
 </html>

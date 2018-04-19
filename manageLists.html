@@ -74,13 +74,15 @@
             </table>
         </div>
 
-		<div id = "playGame">
+		<div id = "deleteDiv">
 			<select id="dropdownList">
 				<option value="Empty.">Select a word list.</option>
 			</select>
-			<button onclick = "deleteWordList()">Delete</button>
 		</div>
-    <button class = "homeButton" onclick = "back()">Home</button>
-    <button class = "helpButton" onclick = "help()">Help</button>
+    <button id="deleteButton" onclick = "deleteWordList()">Delete</button>
+    <img class="homeButton" src="home.png" alt="Home" width="50" height="50" onclick="confirmLeave('home.html')">
+    <!--<button class = "homeButton" onclick = "back()">Home</button>-->
+    <img class="helpButton" src="help.png" alt="Help" width="50" height="50" onclick="help()">
+    <!--<button class = "helpButton" onclick = "help()">Help</button>-->
     </body>
 </html>
