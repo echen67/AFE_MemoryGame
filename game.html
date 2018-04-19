@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/wordFindStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Farm Animals Word Search</title>
+<title id="header">Farm Animals Word Search</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!--<link rel="stylesheet" type="text/css" href="../AFE_MemoryGame/css/main.css" media="all">--!>
 <!-- <link href='//fonts.googleapis.com/css?family=Lato:900italic' rel='stylesheet' type='text/css'> -->
@@ -73,6 +73,7 @@ $(document).ready(function() {
     url = url.split("?");
     url = url[1];
     document.getElementById("title").innerHTML = url;
+    document.getElementById("header").innerHTML = url;
     var ls = localStorage.getItem(url);
     ls = ls.substring(ls.indexOf(',')+1);
     ls = "[" + ls;
