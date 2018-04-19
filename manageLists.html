@@ -21,6 +21,7 @@
                     localStorage.removeItem(choice);
                     fetchLists();
                     location.reload();
+                    alert(choice + " list has successfully been deleted.");
                 }else{
                     // Do nothing
                 }
@@ -47,9 +48,6 @@
                     }
                 // }
                 }
-
-       
-
         </script>
     </head>
     <body onload="fetchLists(); addTable()"> <!-- fetchLists() updates the drop down list select element -->
