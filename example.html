@@ -32,7 +32,7 @@
     <section>
         <div id="puzzle">
     <div class="pLeft">
-        <h1>Farm Animals</h1>
+        <h1 id="title">Farm Animals</h1>
         <div id="gameGrid"></div>
 
         <!-- <a href="downloadable/" target="_blank" title="Print the puzzle : Farm Animals" class="downloadBtn">Download / Print Puzzle</a>        <a href="#" class="showSettings">Puzzle Settings</a> -->
@@ -40,7 +40,7 @@
 
         <div class="related"><div class="blkA">Instructions</div>
             <p>1. Click and drag to highlight.</p>
-            <p>2. If the word is in the word bank, the higlight will change color.</p>
+            <p>2. If the word is in the word bank, the highlight will change color.</p>
             <p>3. Click the sound icon to hear the word.</p>
         </div>
     </div>
@@ -70,8 +70,10 @@ $(document).ready(function() {
     var url = window.location.href;
     url = url.split("?");
     url = url[1];
+
+    document.getElementById("title").innerHTML = url;
+
     var ls = localStorage.getItem(url);
-    // ls == null??
     var header = "{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":" + ls.toString() + "}";
     var str = "{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":[\"Cow\", \"Goat\", \"Pig\", \"Horse\", \"Sheep\", \"Lamb\", \"Chicken\", \"Turkey\", \"Buffalo\", \"Bison\", \"Beef\", \"Pork\", \"Veal\", \"Venison\", \"Alligator\", \"Elk\", \"Deer\", \"Ant\", \"Duck\", \"Swan\", \"Shark\"]}";
     loadGameDataWeb(header);

@@ -94,6 +94,7 @@ function fetchLists() {
 
     for(var i = 0; i < arr.length; i++) {
         var opt = document.createElement('option');
+        opt.className="dropdownContent";
         opt.innerHTML = arr[i];
         opt.value = arr[i];
         sel.appendChild(opt); // populate drop down element with array elements

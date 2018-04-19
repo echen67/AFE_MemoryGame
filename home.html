@@ -13,7 +13,6 @@
                     window.location.href = ls.children[ls.selectedIndex].value;
                 }*/
                 var ls = document.getElementById("dropdownList").value;
-                //setList(ls);
                 window.location.href = "example.html?" + ls;
             }
             function help(){
@@ -37,7 +36,7 @@
 		<div id = "playGame">
 			<select id="dropdownList">
 				<option value="Empty.">Select a word list.</option>
-			</select>
+            </select>
 			<button onclick = "playGame()">Play</button>
 		</div>
     <!-- TODO: pass in puzzle selected to playGame() -->
