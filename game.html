@@ -74,6 +74,9 @@ $(document).ready(function() {
     url = url[1];
     document.getElementById("title").innerHTML = url;
     var ls = localStorage.getItem(url);
+    ls = ls.substring(ls.indexOf(',')+1);
+    ls = "[" + ls;
+    console.log(ls);
     var header = "{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":" + ls.toString() + "}";
     var str = "{\"id\":\"7\",\"title\":\"Farm Animals\",\"words\":[\"Cow\", \"Goat\", \"Pig\", \"Horse\", \"Sheep\", \"Lamb\", \"Chicken\", \"Turkey\", \"Buffalo\", \"Bison\", \"Beef\", \"Pork\", \"Veal\", \"Venison\", \"Alligator\", \"Elk\", \"Deer\", \"Ant\", \"Duck\", \"Swan\", \"Shark\"]}";
     loadGameDataWeb(header);
