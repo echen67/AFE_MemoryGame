@@ -158,8 +158,6 @@ function addTable() {
     for(var i = 0; i < localStorage.length; i++){
         arr.push(localStorage.key(i)); // stores local storage keys in an array
     }
-    // TODO: Alter storage for word count and dates
-
     //new
     var temparr = new Array();
     //end
