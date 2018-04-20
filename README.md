@@ -24,7 +24,8 @@ Installation guide for The Word Search Game 1.0
   Start local hosting using any preferred method (below are some possible methods)
   - If using Python, open a command prompt/shell and locate the correct directory. Use the appropriate commands to run "home.html" (see https://docs.python.org/2/library/simplehttpserver.html)
   - If using IntelliJ, open "home.html" and hover the mouse cursor to the upper right corner of the code and click the chrome icon that pops up (see https://www.jetbrains.com/help/idea/php-built-in-web-server.html)
-  This application will NOT run unless locally hosted
+  
+This application will NOT run unless locally hosted
 
 ## Release Notes
 Release Notes for The Words Search Game 1.0
