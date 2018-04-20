@@ -10,17 +10,17 @@ Platform: Javascript for HTML
 
 ## Installation
 Installation guide for The Word Search Game 1.0
-PRE-REQUISITES
+### PRE-REQUISITES
   An IDE like IntelliJ or any form of local hosting method
-DEPENDENCIES
+### DEPENDENCIES
   There are no dependencies for this application.
-DOWNLOAD
+### DOWNLOAD
   https://github.com/echen67/AFE_MemoryGame
-BUILD
+### BUILD
   No build necessary for this application.
-INSTALLATION
+### INSTALLATION
   Download the zip file and unzip the folder in any location
-RUNNING APPLICATION
+### RUNNING APPLICATION
   1. Start local hosting using any preferred method (below are some possible methods)
     i) If using Python, open a command prompt/shell and locate the correct directory. Use the appropriate commands to run "home.html" (see https://docs.python.org/2/library/simplehttpserver.html)
     ii) If using IntelliJ, open "home.html" and hover the mouse cursor to the upper right corner of the code and click the chrome icon that pops up (see https://www.jetbrains.com/help/idea/php-built-in-web-server.html)
@@ -28,18 +28,18 @@ RUNNING APPLICATION
 
 ## Release Notes
 Release Notes for The Words Search Game 1.0
-NEW FEATURES
-  Added table to manage list page
-  Display date of upload on manage list table
-  Added ability to delete lists from local storage
-  Improved CSS
-  Added CSS to game page
-  Added new method of creating custom lists with input boxes instead of contenteditable unordered list
-BUG FIXES
-  Game page browser title displays appropriate puzzle name (no longer "Farm Animals")
-  Game page puzzle title dispalys appropriate puzzle name, pulling from list name
-  Removed success pop-up from appearing twice on upload file page
-KNOWN BUGS
+### NEW FEATURES
+  - Added table to manage list page
+  - Display date of upload on manage list table
+  - Added ability to delete lists from local storage
+  - Improved CSS
+  - Added CSS to game page
+  - Added new method of creating custom lists with input boxes instead of contenteditable unordered list
+### BUG FIXES
+  - Game page browser title displays appropriate puzzle name (no longer "Farm Animals")
+  - Game page puzzle title dispalys appropriate puzzle name, pulling from list name
+  - Removed success pop-up from appearing twice on upload file page
+### KNOWN BUGS
   No known bugs
 ## Authors
 Project members : 
