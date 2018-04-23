@@ -107,6 +107,7 @@ body{
     padding: 10px 5px;
     top: 17%;
     min-width: 60px;
+    max-width: 100px;
 }
 
 .dropdownContent{
