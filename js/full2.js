@@ -687,7 +687,7 @@ function tts(wordFound){
 
     // if voices is loaded
     if (voices.length > 0) {
-        msg.voice = voices[3];
+        msg.voice = voices[1];
 
         msg.lang = 'en-US';
         window.speechSynthesis.speak(msg);
@@ -700,7 +700,7 @@ function tts(wordFound){
 
                 count = count + 1;
 
-            msg.voice = window.speechSynthesis.getVoices()[3];
+            msg.voice = window.speechSynthesis.getVoices()[1];
             msg.lang = 'en-US';
             //console.log("hess")
             window.speechSynthesis.speak(msg);
